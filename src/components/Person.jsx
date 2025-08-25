@@ -4,11 +4,10 @@ import { Label } from "@/components/ui/label"
 function Person({ personData, setPersonData }) {
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div className="space-y-3">
-        <Label htmlFor="name" className="text-sm font-semibold text-slate-700 flex items-center gap-2">
-          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-          Full Name
+        <Label htmlFor="name" className="block text-sm font-medium text-slate-700">
+          Full Name *
         </Label>
         <Input
           id="name"
@@ -16,38 +15,40 @@ function Person({ personData, setPersonData }) {
           value={personData.name}
           onChange={(e) => setPersonData({ ...personData, name: e.target.value })}
           placeholder="Enter your full name"
-          className="h-12 text-base bg-white/60 backdrop-blur-sm border-slate-200/50 focus:border-blue-400 focus:ring-4 focus:ring-blue-200/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md"
+          className="w-full h-10 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          required
         />
       </div>
 
-      <div className="space-y-3">
-        <Label htmlFor="email" className="text-sm font-semibold text-slate-700 flex items-center gap-2">
-          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-          Email Address
-        </Label>
-        <Input
-          id="email"
-          type="email"
-          value={personData.email}
-          onChange={(e) => setPersonData({ ...personData, email: e.target.value })}
-          placeholder="your.email@example.com"
-          className="h-12 text-base bg-white/60 backdrop-blur-sm border-slate-200/50 focus:border-blue-400 focus:ring-4 focus:ring-blue-200/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md"
-        />
-      </div>
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="space-y-3">
+          <Label htmlFor="email" className="block text-sm font-medium text-slate-700">
+            Email Address *
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            value={personData.email}
+            onChange={(e) => setPersonData({ ...personData, email: e.target.value })}
+            placeholder="your.email@example.com"
+            className="w-full h-10 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
 
-      <div className="space-y-3">
-        <Label htmlFor="phone" className="text-sm font-semibold text-slate-700 flex items-center gap-2">
-          <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-          Phone Number
-        </Label>
-        <Input
-          id="phone"
-          type="tel"
-          value={personData.phone}
-          onChange={(e) => setPersonData({ ...personData, phone: e.target.value })}
-          placeholder="+1 (555) 123-4567"
-          className="h-12 text-base bg-white/60 backdrop-blur-sm border-slate-200/50 focus:border-blue-400 focus:ring-4 focus:ring-blue-200/30 transition-all duration-300 rounded-xl shadow-sm hover:shadow-md"
-        />
+        <div className="space-y-3">
+          <Label htmlFor="phone" className="block text-sm font-medium text-slate-700">
+            Phone Number
+          </Label>
+          <Input
+            id="phone"
+            type="tel"
+            value={personData.phone}
+            onChange={(e) => setPersonData({ ...personData, phone: e.target.value })}
+            placeholder="+1 (555) 123-4567"
+            className="w-full h-10 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
       </div>
     </div>
   );

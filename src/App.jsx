@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { User, GraduationCap, Briefcase } from "lucide-react"
 import './App.css'
 import Person from './components/Person.jsx'
 import Education from './components/Education.jsx'
@@ -77,101 +75,63 @@ const [personData, setPersonData] = useState({
   };
 
   return (
-    <div className="cv-builder relative">
-      {/* Background decorative elements for left panel */}
-      <div className="left-panel relative space-y-8 p-8 bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/30 overflow-hidden">
-        {/* Floating background elements */}
-        <div className="absolute top-10 -left-10 w-32 h-32 bg-gradient-to-r from-blue-200/30 to-purple-200/30 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-20 -right-10 w-40 h-40 bg-gradient-to-r from-purple-200/20 to-pink-200/20 rounded-full blur-2xl"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-r from-green-200/25 to-blue-200/25 rounded-full blur-xl"></div>
-        
-        {/* Header */}
-        <div className="relative text-center mb-10">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg border border-white/30">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-              <span className="text-white text-sm font-bold">✨</span>
-            </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Resume Builder
-            </h1>
-          </div>
-          <p className="text-slate-600 mt-3 text-sm">Create your professional resume</p>
+    <div className="cv-builder">
+      {/* Clean Form Panel */}
+      <div className="left-panel bg-white border-r border-slate-200 overflow-y-auto">
+        {/* Form Header */}
+        <div className="sticky top-0 bg-white border-b border-slate-200 px-8 py-6 z-10">
+          <h1 className="text-2xl font-bold text-slate-900 mb-1">Resume Builder</h1>
+          <p className="text-slate-600 text-sm">Fill in your details to create a professional resume</p>
         </div>
 
-        <Card className="group relative shadow-2xl border-0 bg-white/70 backdrop-blur-xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
-          <CardHeader className="relative pb-6 pt-8">
-            <CardTitle className="flex items-center gap-4 text-2xl font-bold text-slate-800">
-              <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                <User className="h-6 w-6 text-white" />
+        <div className="px-8 py-8">
+          <form className="max-w-3xl space-y-12">
+            {/* Personal Information Section */}
+            <section>
+              <div className="mb-6">
+                <h2 className="text-lg font-semibold text-slate-900 mb-2">Personal Information</h2>
+                <p className="text-sm text-slate-600">Basic details about yourself</p>
               </div>
-              <div>
-                <div>Personal Details</div>
-                <p className="text-sm font-normal text-slate-500 mt-1">Tell us about yourself</p>
-              </div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="relative">
-            <Person personData={personData} setPersonData={setPersonData} />
-          </CardContent>
-        </Card>
+              <Person personData={personData} setPersonData={setPersonData} />
+            </section>
 
-        <Card className="group relative shadow-2xl border-0 bg-white/70 backdrop-blur-xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-green-500/5 to-teal-500/5"></div>
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500"></div>
-          <CardHeader className="relative pb-6 pt-8">
-            <CardTitle className="flex items-center gap-4 text-2xl font-bold text-slate-800">
-              <div className="p-3 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                <GraduationCap className="h-6 w-6 text-white" />
+            {/* Education Section */}
+            <section>
+              <div className="mb-6">
+                <h2 className="text-lg font-semibold text-slate-900 mb-2">Education</h2>
+                <p className="text-sm text-slate-600">Your academic background and qualifications</p>
               </div>
-              <div>
-                <div>Education</div>
-                <p className="text-sm font-normal text-slate-500 mt-1">Add your academic achievements</p>
-              </div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="relative">
-            <Education 
-              currentEducation={currentEducation} 
-              setCurrentEducation={setCurrentEducation}
-              educationList={educationList}
-              addEducation={addEducation}
-              editEducation={editEducation}
-              updateEducation={updateEducation}
-              deleteEducation={deleteEducation}
-              editingIndex={editingEducationIndex}
-            />
-          </CardContent>
-        </Card>
+              <Education 
+                currentEducation={currentEducation} 
+                setCurrentEducation={setCurrentEducation}
+                educationList={educationList}
+                addEducation={addEducation}
+                editEducation={editEducation}
+                updateEducation={updateEducation}
+                deleteEducation={deleteEducation}
+                editingIndex={editingEducationIndex}
+              />
+            </section>
 
-        <Card className="group relative shadow-2xl border-0 bg-white/70 backdrop-blur-xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-indigo-500/5"></div>
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500"></div>
-          <CardHeader className="relative pb-6 pt-8">
-            <CardTitle className="flex items-center gap-4 text-2xl font-bold text-slate-800">
-              <div className="p-3 bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                <Briefcase className="h-6 w-6 text-white" />
+            {/* Work Experience Section */}
+            <section>
+              <div className="mb-6">
+                <h2 className="text-lg font-semibold text-slate-900 mb-2">Work Experience</h2>
+                <p className="text-sm text-slate-600">Your professional work history</p>
               </div>
-              <div>
-                <div>Work Experience</div>
-                <p className="text-sm font-normal text-slate-500 mt-1">Showcase your professional journey</p>
-              </div>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="relative">
-            <Experience 
-              currentExperience={currentExperience}
-              setCurrentExperience={setCurrentExperience}
-              experienceList={experienceList}
-              addExperience={addExperience}
-              editExperience={editExperience}
-              updateExperience={updateExperience}
-              deleteExperience={deleteExperience}
-              editingIndex={editingExperienceIndex}
-            />
-          </CardContent>
-        </Card>
+              <Experience 
+                currentExperience={currentExperience}
+                setCurrentExperience={setCurrentExperience}
+                experienceList={experienceList}
+                addExperience={addExperience}
+                editExperience={editExperience}
+                updateExperience={updateExperience}
+                deleteExperience={deleteExperience}
+                editingIndex={editingExperienceIndex}
+              />
+            </section>
+          </form>
+        </div>
       </div>
 
       <div className="right-panel">
