@@ -1,9 +1,5 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { Pencil, Trash2, Plus, Save } from "lucide-react"
 
 function Education({
   currentEducation, 
@@ -17,105 +13,83 @@ function Education({
 }) {
 
   return (
-    <div className="space-y-6">
-      {/* Form Section */}
-      <div className="space-y-6">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-3">
-            <Label htmlFor="degree" className="block text-sm font-medium text-slate-700">
-              Degree *
-            </Label>
-            <Input
-              id="degree"
-              type="text"
-              onChange={(e) => setCurrentEducation({ ...currentEducation, degree: e.target.value })}
-              value={currentEducation.degree}
-              placeholder="Bachelor of Science"
-              className="w-full h-10 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-              required
-            />
-          </div>
-          
-          <div className="space-y-3">
-            <Label htmlFor="year" className="block text-sm font-medium text-slate-700">
-              Graduation Year *
-            </Label>
-            <Input
-              id="year"
-              type="text"
-              onChange={(e) => setCurrentEducation({ ...currentEducation, year: e.target.value })}
-              value={currentEducation.year}
-              placeholder="2023"
-              className="w-full h-10 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-              required
-            />
-          </div>
+    <div>
+      {/* Simple Form */}
+      <div>
+        <div>
+          <label htmlFor="degree">Degree:</label>
+          <Input
+            id="degree"
+            type="text"
+            onChange={(e) => setCurrentEducation({ ...currentEducation, degree: e.target.value })}
+            value={currentEducation.degree}
+            placeholder="Bachelor of Science"
+            className="border border-blue-300 focus:border-blue-500"
+          />
         </div>
         
-        <div className="space-y-3">
-          <Label htmlFor="institution" className="block text-sm font-medium text-slate-700">
-            Institution *
-          </Label>
+        <div>
+          <label htmlFor="institution">Institution:</label>
           <Input
             id="institution"
             type="text"
             onChange={(e) => setCurrentEducation({ ...currentEducation, institution: e.target.value })}
             value={currentEducation.institution}
-            placeholder="University of California, Berkeley"
-            className="w-full h-10 px-3 py-2 text-sm border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-            required
+            placeholder="University Name"
+            className="border border-blue-300 focus:border-blue-500"
+          />
+        </div>
+        
+        <div>
+          <label htmlFor="year">Year:</label>
+          <Input
+            id="year"
+            type="text"
+            onChange={(e) => setCurrentEducation({ ...currentEducation, year: e.target.value })}
+            value={currentEducation.year}
+            placeholder="2024"
+            className="border border-blue-300 focus:border-blue-500"
           />
         </div>
         
         <Button 
           onClick={editingIndex !== null ? updateEducation : addEducation}
-          className="w-full h-10 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md transition-colors"
+          className="bg-blue-500 hover:bg-blue-600 text-white"
         >
-          {editingIndex !== null ? (
-            <>
-              <Save className="mr-2 h-4 w-4" />
-              Update Education
-            </>
-          ) : (
-            <>
-              <Plus className="mr-2 h-4 w-4" />
-              Add Education
-            </>
-          )}
+          {editingIndex !== null ? "Update" : "Add"} Education
         </Button>
       </div>
 
-      {/* List Section */}
+      {/* Dropdown List */}
       {educationList.length > 0 && (
-        <div className="pt-6 border-t border-slate-200">
-          <h4 className="text-sm font-medium text-slate-900 mb-4">Added Education Entries ({educationList.length})</h4>
-          <div className="space-y-4">
+        <div style={{ marginTop: '20px' }}>
+          <h4 style={{ color: '#333', marginBottom: '10px' }}>Education List:</h4>
+          <div style={{ border: '2px solid #3b82f6', borderRadius: '4px', maxHeight: '200px', overflowY: 'auto' }}>
             {educationList.map((education, index) => (
-              <div key={index} className="text-center">
-                <div className="mb-3">
-                  <h5 className="font-medium text-slate-900 mb-1">
-                    {education.degree}
-                  </h5>
-                  <p className="text-sm text-slate-600 mb-1">{education.institution}</p>
-                  <p className="text-xs text-slate-500">Class of {education.year}</p>
-                </div>
-                <div className="flex justify-center gap-3">
+              <div key={index} style={{ 
+                padding: '10px', 
+                backgroundColor: index % 2 === 0 ? '#f0f9ff' : '#ffffff',
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center',
+                borderBottom: index < educationList.length - 1 ? '1px solid #e5e7eb' : 'none'
+              }}>
+                <span style={{ flex: 1 }}>{education.degree} - {education.institution} ({education.year})</span>
+                <div style={{ display: 'flex', gap: '5px' }}>
                   <Button
                     onClick={() => editEducation(index)}
-                    variant="outline"
                     size="sm"
-                    className="h-8 px-3 text-xs"
+                    className="bg-green-500 hover:bg-green-600 text-white"
+                    style={{ fontSize: '12px', padding: '4px 8px' }}
                   >
-                    <Pencil className="h-3 w-3 mr-1" />
                     Edit
                   </Button>
                   <Button
                     onClick={() => deleteEducation(index)}
-                    variant="outline"
                     size="sm"
-                    className="h-8 px-3 text-xs text-red-600 hover:text-red-700 hover:bg-red-50"
+                    className="bg-red-500 hover:bg-red-600 text-white"
+                    style={{ fontSize: '12px', padding: '4px 8px' }}
                   >
-                    <Trash2 className="h-3 w-3 mr-1" />
                     Delete
                   </Button>
                 </div>
