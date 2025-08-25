@@ -8,7 +8,102 @@
    display: flex;
   justify-content: space-between; /* pushes them apart */
   margin: 0; /* optional reset */
+}
 
+#experienceLine{
+   display: flex;
+  justify-content: space-between; /* pushes company and years apart */
+  margin: 0; /* optional reset */
+}
+
+#workExperienceContainer {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+#workExperienceContainer h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  color: #333;
+}
+
+#experienceLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+#experienceLine p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+#experienceLine p:last-child {
+  font-weight: 500;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+#workExperienceContainer > p:last-child {
+  margin: 8px 0 0 0;
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+#educationContainer {
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+#educationContainer h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 8px;
+  color: #333;
+}
+
+#educationLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+#educationLine p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+#educationLine p:last-child {
+  font-weight: 500;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+#educationContainer > p:last-child {
+  margin: 8px 0 0 0;
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
 }
 
 

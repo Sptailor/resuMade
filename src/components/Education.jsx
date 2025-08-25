@@ -1,50 +1,54 @@
-import { useState } from "react";
-
 import '../styles/Education.css';
-function Education({educationData, setEducationData}) {
-  
-
-  const handleDegreeChange = (e) => {
-
-    const newEducation ={ ...educationData, degree: e.target.value };
-    setEducationData(newEducation);
-  };
-
-  const handleInstitutionChange = (e) => {
-    const newEducation = { ...educationData, institution: e.target.value };
-    setEducationData(newEducation);
-  };
-
-  const handleYearChange = (e) => {
-    const newEducation = { ...educationData, year: e.target.value };
-    setEducationData(newEducation);
-  };
+function Education({
+  currentEducation, 
+  setCurrentEducation,
+  educationList,
+  addEducation,
+  editEducation,
+  updateEducation,
+  deleteEducation,
+  editingIndex
+}) {
 
   return (
     <>
- 
-      <h1>{educationData.degree}</h1>
-      <h2>{educationData.institution}</h2>
-      <h3>{educationData.year}</h3>
-      <input
-        type="text"
-        onChange={handleDegreeChange}
-        value={educationData.degree}
-        placeholder="Degree"
-      />
-      <input
-        type="text"
-        onChange={handleInstitutionChange}
-        value={educationData.institution}
-        placeholder="Institution"
-      />
-      <input
-        type="text"
-        onChange={handleYearChange}
-        value={educationData.year}
-        placeholder="Year of Graduation"
-      />
-   
+      <div className="education-form">
+        <input
+          type="text"
+          onChange={(e) => setCurrentEducation({ ...currentEducation, degree: e.target.value })}
+          value={currentEducation.degree}
+          placeholder="Degree"
+        />
+        <input
+          type="text"
+          onChange={(e) => setCurrentEducation({ ...currentEducation, institution: e.target.value })}
+          value={currentEducation.institution}
+          placeholder="Institution"
+        />
+        <input
+          type="text"
+          onChange={(e) => setCurrentEducation({ ...currentEducation, year: e.target.value })}
+          value={currentEducation.year}
+          placeholder="Year of Graduation"
+        />
+        <button onClick={editingIndex !== null ? updateEducation : addEducation}>
+          {editingIndex !== null ? 'Update' : 'Add'} Education
+        </button>
+      </div>
+
+      <div className="education-list">
+        {educationList.map((education, index) => (
+          <div key={index} className="education-item">
+            <div>
+              <strong>{education.degree}</strong> at {education.institution} ({education.year})
+            </div>
+            <div>
+              <button onClick={() => editEducation(index)}>Edit</button>
+              <button onClick={() => deleteEducation(index)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

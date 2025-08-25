@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import '../styles/Person.css'
 
 
@@ -23,9 +21,6 @@ function Person({ personData, setPersonData }) {
  console.log("during render: ", personData);
   return (
     <>
-      <h1>{personData.name}</h1>
-      <h2>{personData.email}</h2>
-      <h2>{personData.phone}</h2>
       <label htmlFor="name">Full Name: </label>
       <input id="name" type="text" value={personData.name} onChange={handleNameChange} placeholder="John Deere" />
          
