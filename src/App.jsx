@@ -1,5 +1,6 @@
 import { useState } from 'react'
-
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { User, GraduationCap, Briefcase } from "lucide-react"
 import './App.css'
 import Person from './components/Person.jsx'
 import Education from './components/Education.jsx'
@@ -76,33 +77,103 @@ const [personData, setPersonData] = useState({
   };
 
   return (
-    <div className="cv-builder">
-      <div className="left-panel">
-        <h2>Personal Details</h2>
-        <Person personData={personData} setPersonData={setPersonData} />
-        <h2>Education</h2>
-        <Education 
-          currentEducation={currentEducation} 
-          setCurrentEducation={setCurrentEducation}
-          educationList={educationList}
-          addEducation={addEducation}
-          editEducation={editEducation}
-          updateEducation={updateEducation}
-          deleteEducation={deleteEducation}
-          editingIndex={editingEducationIndex}
-        />
-        <h2>Work Experience</h2>
-        <Experience 
-          currentExperience={currentExperience}
-          setCurrentExperience={setCurrentExperience}
-          experienceList={experienceList}
-          addExperience={addExperience}
-          editExperience={editExperience}
-          updateExperience={updateExperience}
-          deleteExperience={deleteExperience}
-          editingIndex={editingExperienceIndex}
-        />
+    <div className="cv-builder relative">
+      {/* Background decorative elements for left panel */}
+      <div className="left-panel relative space-y-8 p-8 bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/30 overflow-hidden">
+        {/* Floating background elements */}
+        <div className="absolute top-10 -left-10 w-32 h-32 bg-gradient-to-r from-blue-200/30 to-purple-200/30 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-20 -right-10 w-40 h-40 bg-gradient-to-r from-purple-200/20 to-pink-200/20 rounded-full blur-2xl"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-r from-green-200/25 to-blue-200/25 rounded-full blur-xl"></div>
+        
+        {/* Header */}
+        <div className="relative text-center mb-10">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg border border-white/30">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-sm font-bold">✨</span>
+            </div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Resume Builder
+            </h1>
+          </div>
+          <p className="text-slate-600 mt-3 text-sm">Create your professional resume</p>
+        </div>
+
+        <Card className="group relative shadow-2xl border-0 bg-white/70 backdrop-blur-xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+          <CardHeader className="relative pb-6 pt-8">
+            <CardTitle className="flex items-center gap-4 text-2xl font-bold text-slate-800">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                <User className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <div>Personal Details</div>
+                <p className="text-sm font-normal text-slate-500 mt-1">Tell us about yourself</p>
+              </div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="relative">
+            <Person personData={personData} setPersonData={setPersonData} />
+          </CardContent>
+        </Card>
+
+        <Card className="group relative shadow-2xl border-0 bg-white/70 backdrop-blur-xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-green-500/5 to-teal-500/5"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500"></div>
+          <CardHeader className="relative pb-6 pt-8">
+            <CardTitle className="flex items-center gap-4 text-2xl font-bold text-slate-800">
+              <div className="p-3 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                <GraduationCap className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <div>Education</div>
+                <p className="text-sm font-normal text-slate-500 mt-1">Add your academic achievements</p>
+              </div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="relative">
+            <Education 
+              currentEducation={currentEducation} 
+              setCurrentEducation={setCurrentEducation}
+              educationList={educationList}
+              addEducation={addEducation}
+              editEducation={editEducation}
+              updateEducation={updateEducation}
+              deleteEducation={deleteEducation}
+              editingIndex={editingEducationIndex}
+            />
+          </CardContent>
+        </Card>
+
+        <Card className="group relative shadow-2xl border-0 bg-white/70 backdrop-blur-xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-indigo-500/5"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-purple-500 to-indigo-500"></div>
+          <CardHeader className="relative pb-6 pt-8">
+            <CardTitle className="flex items-center gap-4 text-2xl font-bold text-slate-800">
+              <div className="p-3 bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                <Briefcase className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <div>Work Experience</div>
+                <p className="text-sm font-normal text-slate-500 mt-1">Showcase your professional journey</p>
+              </div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="relative">
+            <Experience 
+              currentExperience={currentExperience}
+              setCurrentExperience={setCurrentExperience}
+              experienceList={experienceList}
+              addExperience={addExperience}
+              editExperience={editExperience}
+              updateExperience={updateExperience}
+              deleteExperience={deleteExperience}
+              editingIndex={editingExperienceIndex}
+            />
+          </CardContent>
+        </Card>
       </div>
+
       <div className="right-panel">
         <h2>{personData.name}</h2>
         <div id="contactInfo">
