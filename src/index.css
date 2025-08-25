@@ -1,0 +1,75 @@
+/* Container for the entire CV builder */
+.cv-builder {
+  display: flex;
+  gap: 20px;            /* space between left and right panels */
+  height: 100vh;        /* full viewport height */
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+/* Left panel with form inputs */
+.left-panel {
+  flex: 1;              /* take equal width */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;     /* scroll if content overflows */
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Right panel with preview */
+.right-panel {
+  flex: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  border-left: 4px solid #3b82f6; /* blue accent border */
+}
+
+/* Headings */
+.right-panel h2 {
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #222;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 2px;
+}
+
+/* Subsection headings */
+.right-panel h3 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Paragraph styling inside preview */
+.right-panel p {
+  margin: 4px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .cv-builder {
+    flex-direction: column;
+  }
+  .left-panel,
+  .right-panel {
+    flex: unset;
+    width: 100%;
+    height: 50vh;
+  }
+}
