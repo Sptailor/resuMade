@@ -6,19 +6,24 @@
   padding: 20px;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+}
+
+/* Light theme (default) */
+.cv-builder {
   background-color: #f5f7fa;
+}
+
+.cv-builder.dark-theme {
+  background-color: #111827;
 }
 
 /* Left panel with form inputs */
 .left-panel {
   flex: 1;              /* take equal width */
-  background-color: #fff;
-  border: 1px solid #ddd;
   border-radius: 6px;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;     /* scroll if content overflows */
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -27,8 +32,6 @@
 /* Right panel with preview */
 .right-panel {
   flex: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
   border-radius: 6px;
   padding: 20px;
   box-sizing: border-box;
@@ -41,7 +44,6 @@
 .right-panel h2 {
   margin-top: 0;
   margin-bottom: 2px;
-  color: #222;
   border-bottom: 2px solid #3b82f6;
   padding-bottom: 2px;
 }
@@ -50,7 +52,6 @@
 .right-panel h3 {
   margin-top: 16px;
   margin-bottom: 8px;
-  color: #333;
   font-weight: 600;
 }
 
@@ -58,7 +59,60 @@
 .right-panel p {
   margin: 4px 0;
   font-size: 16px;
-  color: #444;
+}
+
+/* Dark theme global text color fixes */
+.cv-builder.dark-theme {
+  color: #f3f4f6;
+}
+
+.cv-builder.dark-theme * {
+  color: inherit !important;
+}
+
+.cv-builder.dark-theme input::placeholder {
+  color: #9ca3af !important;
+}
+
+.cv-builder.dark-theme label {
+  color: inherit !important;
+}
+
+.cv-builder.dark-theme h1,
+.cv-builder.dark-theme h2,
+.cv-builder.dark-theme h3,
+.cv-builder.dark-theme h4,
+.cv-builder.dark-theme h5,
+.cv-builder.dark-theme h6 {
+  color: inherit !important;
+}
+
+.cv-builder.dark-theme p {
+  color: inherit !important;
+}
+
+.cv-builder.dark-theme span {
+  color: inherit !important;
+}
+
+.cv-builder.dark-theme div {
+  color: inherit !important;
+}
+
+.cv-builder.dark-theme button {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  font-weight: bold !important;
+}
+
+/* Override Tailwind classes specifically */
+.cv-builder.dark-theme .text-gray-900,
+.cv-builder.dark-theme .text-gray-800,
+.cv-builder.dark-theme .text-gray-700,
+.cv-builder.dark-theme .text-gray-600,
+.cv-builder.dark-theme .text-gray-500,
+.cv-builder.dark-theme .text-black {
+  color: #f3f4f6 !important;
 }
 
 /* Responsive design */

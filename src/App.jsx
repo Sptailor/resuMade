@@ -25,6 +25,7 @@ const [personData, setPersonData] = useState({
   });
   const [editingEducationIndex, setEditingEducationIndex] = useState(null);
   const [editingExperienceIndex, setEditingExperienceIndex] = useState(null);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const addEducation = () => {
     if (currentEducation.degree && currentEducation.institution && currentEducation.year) {
@@ -75,31 +76,41 @@ const [personData, setPersonData] = useState({
   };
 
   return (
-    <div className="cv-builder">
+    <div className={`cv-builder ${isDarkTheme ? 'dark-theme' : ''}`} style={{
+      backgroundColor: isDarkTheme ? '#111827' : '#f5f7fa'
+    }}>
       {/* Clean Form Panel */}
-      <div className="left-panel bg-gray-50 border-r border-gray-200 overflow-y-auto">
+      <div className={`left-panel border-r overflow-y-auto ${isDarkTheme ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
         {/* Form Header */}
-        <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 px-8 py-8 z-10 shadow-sm">
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">Resume Builder</h1>
-          <p className="text-gray-600">Create your professional resume with ease</p>
+        <div className={`sticky top-0 backdrop-blur-sm border-b px-8 py-6 z-10 shadow-sm ${isDarkTheme ? 'bg-gray-800/95 border-gray-700' : 'bg-white/95 border-gray-200'}`}>
+          <div className="flex justify-between items-center mb-2">
+            <h1 className={`text-3xl font-bold tracking-tight ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Resume Builder</h1>
+            <button 
+              onClick={() => setIsDarkTheme(!isDarkTheme)}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${isDarkTheme ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}
+            >
+              {isDarkTheme ? '☀️ Light' : '🌙 Dark'}
+            </button>
+          </div>
+          <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Create your professional resume with ease</p>
         </div>
 
-        <div className="px-8 py-12">
-          <div className="max-w-2xl mx-auto space-y-16">
+        <div className="px-8 py-8">
+          <div className="max-w-2xl mx-auto space-y-10">
             {/* Personal Information Section */}
-            <section className="bg-white rounded-2xl shadow-sm border border-gray-200/50 p-8">
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2">Personal Information</h2>
-                <p className="text-gray-600">Tell us about yourself</p>
+            <section className={`rounded-2xl shadow-sm border p-6 ${isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200/50'}`}>
+              <div className="mb-6">
+                <h2 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Personal Information</h2>
+                <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Tell us about yourself</p>
               </div>
-              <Person personData={personData} setPersonData={setPersonData} />
+              <Person personData={personData} setPersonData={setPersonData} isDarkTheme={isDarkTheme} />
             </section>
 
             {/* Education Section */}
-            <section className="bg-white rounded-2xl shadow-sm border border-gray-200/50 p-8">
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2">Education</h2>
-                <p className="text-gray-600">Your academic background</p>
+            <section className={`rounded-2xl shadow-sm border p-6 ${isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200/50'}`}>
+              <div className="mb-6">
+                <h2 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Education</h2>
+                <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Your academic background</p>
               </div>
               <Education 
                 currentEducation={currentEducation} 
@@ -110,14 +121,15 @@ const [personData, setPersonData] = useState({
                 updateEducation={updateEducation}
                 deleteEducation={deleteEducation}
                 editingIndex={editingEducationIndex}
+                isDarkTheme={isDarkTheme}
               />
             </section>
 
             {/* Work Experience Section */}
-            <section className="bg-white rounded-2xl shadow-sm border border-gray-200/50 p-8">
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2">Work Experience</h2>
-                <p className="text-gray-600">Your professional journey</p>
+            <section className={`rounded-2xl shadow-sm border p-6 ${isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200/50'}`}>
+              <div className="mb-6">
+                <h2 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Work Experience</h2>
+                <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Your professional journey</p>
               </div>
               <Experience 
                 currentExperience={currentExperience}
@@ -128,36 +140,46 @@ const [personData, setPersonData] = useState({
                 updateExperience={updateExperience}
                 deleteExperience={deleteExperience}
                 editingIndex={editingExperienceIndex}
+                isDarkTheme={isDarkTheme}
               />
             </section>
           </div>
         </div>
       </div>
 
-      <div className="right-panel">
-        <h2>{personData.name}</h2>
+      <div className={`right-panel ${isDarkTheme ? 'dark' : ''}`} style={{
+        backgroundColor: isDarkTheme ? '#1f2937' : '#fff',
+        color: isDarkTheme ? '#f3f4f6' : '#222',
+        borderColor: isDarkTheme ? '#374151' : '#ccc',
+        borderLeftColor: isDarkTheme ? '#3b82f6' : '#3b82f6'
+      }}>
+        <h2 style={{ 
+          color: isDarkTheme ? '#f3f4f6' : '#222',
+          borderBottomColor: isDarkTheme ? '#3b82f6' : '#3b82f6'
+        }}>{personData.name}</h2>
         <div id="contactInfo">
-          <p>Email: {personData.email}</p>
-          <p>Phone: {personData.phone}</p>
+          <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>Email: {personData.email}</p>
+          <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>Phone: {personData.phone}</p>
         </div>
         <div id="educationContainer">
-          <h3>Education</h3>
+          <h3 style={{ color: isDarkTheme ? '#e5e7eb' : '#333' }}>Education</h3>
           {educationList.map((education, index) => (
             <div key={index} className="education-display">
               <div className="education-line">
-                <p>{education.institution}</p> <p>{education.year}</p>
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{education.institution}</p> 
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{education.year}</p>
               </div>
-              <p>{education.degree}</p>
+              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{education.degree}</p>
             </div>
           ))}
         </div>
         <div id="workExperienceContainer">
-          <h3>Work Experience</h3>
+          <h3 style={{ color: isDarkTheme ? '#e5e7eb' : '#333' }}>Work Experience</h3>
           {experienceList.map((experience, index) => (
             <div key={index} className="experience-display">
-              <p><strong>{experience.title}</strong></p>
-              <p>{experience.company}</p>
-              <p>{experience.years}</p>
+              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}><strong>{experience.title}</strong></p>
+              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{experience.company}</p>
+              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{experience.years}</p>
             </div>
           ))}
         </div>
