@@ -2,6 +2,7 @@
 .cv-builder {
   display: flex;
   gap: 20px;            /* space between left and right panels */
+  width: 100vw;         /* full viewport width */
   height: 100vh;        /* full viewport height */
   padding: 20px;
   box-sizing: border-box;
@@ -19,14 +20,14 @@
 
 /* Left panel with form inputs */
 .left-panel {
-  flex: 1;              /* take equal width */
+  flex: 1;
   border-radius: 6px;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto;     /* scroll if content overflows */
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0;
 }
 
 /* Right panel with preview */
@@ -100,9 +101,7 @@
 }
 
 .cv-builder.dark-theme button {
-  color: white !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
-  font-weight: bold !important;
+  color: #000000 !important;
 }
 
 /* Override Tailwind classes specifically */

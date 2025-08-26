@@ -118,8 +118,8 @@ function Experience({
           onClick={editingIndex !== null ? updateExperience : addExperience}
           className={`w-full py-3 px-6 font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] ${
             isDarkTheme 
-              ? 'bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white' 
-              : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white'
+              ? 'bg-gray-800 hover:bg-gray-700 text-white border-2 border-purple-400' 
+              : 'bg-purple-700 hover:bg-purple-800 text-white'
           }`}
         >
           {editingIndex !== null ? "✏️ Update Experience" : "💼 Add Experience"}

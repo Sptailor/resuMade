@@ -119,8 +119,8 @@ function Education({
           onClick={editingIndex !== null ? updateEducation : addEducation}
           className={`w-full py-3 px-6 font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] ${
             isDarkTheme 
-              ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white' 
-              : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white'
+              ? 'bg-gray-800 hover:bg-gray-700 text-white border-2 border-blue-400' 
+              : 'bg-blue-700 hover:bg-blue-800 text-white'
           }`}
         >
           {editingIndex !== null ? "✏️ Update Education" : "➕ Add Education"}

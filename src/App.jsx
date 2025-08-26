@@ -77,20 +77,29 @@ const [personData, setPersonData] = useState({
 
   return (
     <div className={`cv-builder ${isDarkTheme ? 'dark-theme' : ''}`} style={{
-      backgroundColor: isDarkTheme ? '#111827' : '#f5f7fa'
+      backgroundColor: isDarkTheme ? '#111827' : '#f5f7fa',
+      position: 'relative'
     }}>
+      {/* Theme Toggle Button - Fixed in corner */}
+      <button 
+        onClick={() => setIsDarkTheme(!isDarkTheme)}
+        className={`fixed top-6 right-6 z-50 rounded-lg shadow-xl font-medium transition-all duration-200 hover:scale-105 flex items-center justify-center text-lg ${isDarkTheme ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}
+        style={{
+          width: '48px',
+          height: '48px',
+          minWidth: '48px',
+          minHeight: '48px'
+        }}
+        title={isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      >
+        {isDarkTheme ? '☀️' : '🌙'}
+      </button>
       {/* Clean Form Panel */}
       <div className={`left-panel border-r overflow-y-auto ${isDarkTheme ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
         {/* Form Header */}
         <div className={`sticky top-0 backdrop-blur-sm border-b px-8 py-6 z-10 shadow-sm ${isDarkTheme ? 'bg-gray-800/95 border-gray-700' : 'bg-white/95 border-gray-200'}`}>
-          <div className="flex justify-between items-center mb-2">
+          <div className="mb-2">
             <h1 className={`text-3xl font-bold tracking-tight ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Resume Builder</h1>
-            <button 
-              onClick={() => setIsDarkTheme(!isDarkTheme)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${isDarkTheme ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}
-            >
-              {isDarkTheme ? '☀️ Light' : '🌙 Dark'}
-            </button>
           </div>
           <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Create your professional resume with ease</p>
         </div>
@@ -150,8 +159,10 @@ const [personData, setPersonData] = useState({
       <div className={`right-panel ${isDarkTheme ? 'dark' : ''}`} style={{
         backgroundColor: isDarkTheme ? '#1f2937' : '#fff',
         color: isDarkTheme ? '#f3f4f6' : '#222',
-        borderColor: isDarkTheme ? '#374151' : '#ccc',
-        borderLeftColor: isDarkTheme ? '#3b82f6' : '#3b82f6'
+        borderTop: isDarkTheme ? '1px solid #374151' : '1px solid #ccc',
+        borderRight: isDarkTheme ? '1px solid #374151' : '1px solid #ccc',
+        borderBottom: isDarkTheme ? '1px solid #374151' : '1px solid #ccc',
+        borderLeft: '4px solid #3b82f6'
       }}>
         <h2 style={{ 
           color: isDarkTheme ? '#f3f4f6' : '#222',
