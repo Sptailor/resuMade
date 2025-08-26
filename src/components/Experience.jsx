@@ -88,7 +88,7 @@ function Experience({
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          marginBottom: '20px',
+          marginBottom: '18px',
           gap: '20px'
         }}>
           <label htmlFor="years" style={{ 
@@ -107,6 +107,36 @@ function Experience({
             value={currentExperience.years}
             onChange={(e) => setCurrentExperience({ ...currentExperience, years: e.target.value })}
             className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              isDarkTheme 
+                ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
+                : 'bg-white border-purple-300 focus:border-purple-600'
+            }`}
+          />
+        </div>
+
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'flex-start', 
+          marginBottom: '20px',
+          gap: '20px'
+        }}>
+          <label htmlFor="description" style={{ 
+            minWidth: '130px', 
+            fontWeight: '700', 
+            color: isDarkTheme ? '#e9d5ff' : '#6d28d9',
+            fontSize: '15px',
+            textShadow: isDarkTheme ? '0 1px 2px rgba(0,0,0,0.3)' : '0 1px 2px rgba(109, 40, 217, 0.2)',
+            paddingTop: '8px'
+          }}>
+            Description
+          </label>
+          <textarea
+            id="description"
+            placeholder="Brief description of your role and achievements..."
+            value={currentExperience.description}
+            onChange={(e) => setCurrentExperience({ ...currentExperience, description: e.target.value })}
+            rows="3"
+            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg resize-vertical ${
               isDarkTheme 
                 ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
                 : 'bg-white border-purple-300 focus:border-purple-600'
@@ -142,7 +172,9 @@ function Experience({
                 alignItems: 'center',
                 borderBottom: index < experienceList.length - 1 ? (isDarkTheme ? '1px solid #6b7280' : '1px solid #e5e7eb') : 'none'
               }}>
-                <span style={{ flex: 1, color: isDarkTheme ? '#f3f4f6' : '#000' }}>{experience.title} - {experience.company} ({experience.years})</span>
+                <span style={{ flex: 1, color: isDarkTheme ? '#f3f4f6' : '#000' }}>
+                  {experience.title} - {experience.company} ({experience.years}){experience.description ? ` - ${experience.description.substring(0, 50)}${experience.description.length > 50 ? '...' : ''}` : ''}
+                </span>
                 <div style={{ display: 'flex', gap: '5px' }}>
                   <Button
                     onClick={() => editExperience(index)}

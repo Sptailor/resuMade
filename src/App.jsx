@@ -24,6 +24,7 @@ const [personData, setPersonData] = useState({
     title: "",
     company: "",
     years: "",
+    description: "",
   });
   const [editingEducationIndex, setEditingEducationIndex] = useState(null);
   const [editingExperienceIndex, setEditingExperienceIndex] = useState(null);
@@ -56,7 +57,7 @@ const [personData, setPersonData] = useState({
   const addExperience = () => {
     if (currentExperience.title && currentExperience.company && currentExperience.years) {
       setExperienceList([...experienceList, currentExperience]);
-      setCurrentExperience({ title: "", company: "", years: "" });
+      setCurrentExperience({ title: "", company: "", years: "", description: "" });
     }
   };
 
@@ -69,7 +70,7 @@ const [personData, setPersonData] = useState({
     const updatedList = [...experienceList];
     updatedList[editingExperienceIndex] = currentExperience;
     setExperienceList(updatedList);
-    setCurrentExperience({ title: "", company: "", years: "" });
+    setCurrentExperience({ title: "", company: "", years: "", description: "" });
     setEditingExperienceIndex(null);
   };
 
@@ -217,10 +218,31 @@ const [personData, setPersonData] = useState({
         <div id="workExperienceContainer">
           <h3 style={{ color: isDarkTheme ? '#e5e7eb' : '#333' }}>Work Experience</h3>
           {experienceList.map((experience, index) => (
-            <div key={index} className="experience-display">
-              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}><strong>{experience.title}</strong></p>
-              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{experience.company}</p>
-              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{experience.years}</p>
+            <div key={index} className="experience-display" style={{ marginBottom: '15px' }}>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'baseline',
+                marginBottom: '5px'
+              }}>
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', fontWeight: '600', margin: 0 }}>
+                  {experience.title} - {experience.company}
+                </p>
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', fontSize: '14px', fontStyle: 'italic', margin: 0 }}>
+                  {experience.years}
+                </p>
+              </div>
+              {experience.description && (
+                <p style={{ 
+                  color: isDarkTheme ? '#d1d5db' : '#444', 
+                  margin: 0,
+                  fontSize: '14px',
+                  lineHeight: '1.4',
+                  paddingTop: '3px'
+                }}>
+                  {experience.description}
+                </p>
+              )}
             </div>
           ))}
         </div>
