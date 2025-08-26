@@ -16,7 +16,9 @@ const [personData, setPersonData] = useState({
   const [currentEducation, setCurrentEducation] = useState({
     degree: "",
     institution: "",
+    month: "",
     year: "",
+    major: "",
   });
   const [currentExperience, setCurrentExperience] = useState({
     title: "",
@@ -28,9 +30,9 @@ const [personData, setPersonData] = useState({
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const addEducation = () => {
-    if (currentEducation.degree && currentEducation.institution && currentEducation.year) {
+    if (currentEducation.degree && currentEducation.institution && currentEducation.month && currentEducation.year) {
       setEducationList([...educationList, currentEducation]);
-      setCurrentEducation({ degree: "", institution: "", year: "" });
+      setCurrentEducation({ degree: "", institution: "", month: "", year: "", major: "" });
     }
   };
 
@@ -43,7 +45,7 @@ const [personData, setPersonData] = useState({
     const updatedList = [...educationList];
     updatedList[editingEducationIndex] = currentEducation;
     setEducationList(updatedList);
-    setCurrentEducation({ degree: "", institution: "", year: "" });
+    setCurrentEducation({ degree: "", institution: "", month: "", year: "", major: "" });
     setEditingEducationIndex(null);
   };
 
@@ -83,12 +85,15 @@ const [personData, setPersonData] = useState({
       {/* Theme Toggle Button - Fixed in corner */}
       <button 
         onClick={() => setIsDarkTheme(!isDarkTheme)}
-        className={`fixed top-6 right-6 z-50 rounded-lg shadow-xl font-medium transition-all duration-200 hover:scale-105 flex items-center justify-center text-lg ${isDarkTheme ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}
+        className="fixed top-6 right-6 z-50 rounded-xl shadow-xl font-semibold transition-all duration-300 hover:scale-110 flex items-center justify-center text-sm border-2"
         style={{
-          width: '48px',
-          height: '48px',
-          minWidth: '48px',
-          minHeight: '48px'
+          width: '50px',
+          height: '50px',
+          minWidth: '50px',
+          minHeight: '50px',
+          backgroundColor: isDarkTheme ? '#f3f4f6' : '#1f2937',
+          color: isDarkTheme ? '#1f2937' : '#f3f4f6',
+          borderColor: isDarkTheme ? '#e5e7eb' : '#374151'
         }}
         title={isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       >
@@ -168,19 +173,44 @@ const [personData, setPersonData] = useState({
           color: isDarkTheme ? '#f3f4f6' : '#222',
           borderBottomColor: isDarkTheme ? '#3b82f6' : '#3b82f6'
         }}>{personData.name}</h2>
-        <div id="contactInfo">
-          <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>Email: {personData.email}</p>
-          <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>Phone: {personData.phone}</p>
+        <div id="contactInfo" style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          gap: '30px', 
+          flexWrap: 'wrap',
+          marginBottom: '20px'
+        }}>
+          <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', margin: 0 }}>Email: {personData.email}</p>
+          <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', margin: 0 }}>Phone: {personData.phone}</p>
         </div>
         <div id="educationContainer">
           <h3 style={{ color: isDarkTheme ? '#e5e7eb' : '#333' }}>Education</h3>
           {educationList.map((education, index) => (
-            <div key={index} className="education-display">
-              <div className="education-line">
-                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{education.institution}</p> 
-                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{education.year}</p>
+            <div key={index} className="education-display" style={{ marginBottom: '15px' }}>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'baseline',
+                marginBottom: '5px'
+              }}>
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', fontWeight: '600', margin: 0 }}>
+                  {education.institution}
+                </p>
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', fontSize: '14px', fontStyle: 'italic', margin: 0 }}>
+                  {education.month} {education.year}
+                </p>
               </div>
-              <p style={{ color: isDarkTheme ? '#d1d5db' : '#444' }}>{education.degree}</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', margin: 0 }}>
+                  {education.degree}
+                </p>
+                {education.major && (
+                  <p style={{ color: isDarkTheme ? '#d1d5db' : '#444', margin: 0, fontStyle: 'italic' }}>
+                    - {education.major}
+                  </p>
+                )}
+              </div>
             </div>
           ))}
         </div>

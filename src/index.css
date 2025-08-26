@@ -75,6 +75,10 @@
   color: #9ca3af !important;
 }
 
+.cv-builder.dark-theme input {
+  color: #000000 !important;
+}
+
 .cv-builder.dark-theme label {
   color: inherit !important;
 }

@@ -89,7 +89,48 @@ function Education({
         <div style={{ 
           display: 'flex', 
           alignItems: 'center', 
-          marginBottom: '20px',
+          marginBottom: '18px',
+          gap: '20px'
+        }}>
+          <label htmlFor="month" style={{ 
+            minWidth: '130px', 
+            fontWeight: '700', 
+            color: isDarkTheme ? '#ddd6fe' : '#1e40af',
+            fontSize: '15px',
+            textShadow: isDarkTheme ? '0 1px 2px rgba(0,0,0,0.3)' : '0 1px 2px rgba(30, 64, 175, 0.2)'
+          }}>
+            Month *
+          </label>
+          <select
+            id="month"
+            onChange={(e) => setCurrentEducation({ ...currentEducation, month: e.target.value })}
+            value={currentEducation.month}
+            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              isDarkTheme 
+                ? 'bg-gray-700 border-blue-400 text-black focus:border-blue-300' 
+                : 'bg-white border-blue-300 focus:border-blue-600'
+            }`}
+          >
+            <option value="">Select Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          marginBottom: '18px',
           gap: '20px'
         }}>
           <label htmlFor="year" style={{ 
@@ -107,6 +148,35 @@ function Education({
             onChange={(e) => setCurrentEducation({ ...currentEducation, year: e.target.value })}
             value={currentEducation.year}
             placeholder="2024"
+            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              isDarkTheme 
+                ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
+                : 'bg-white border-blue-300 focus:border-blue-600'
+            }`}
+          />
+        </div>
+
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          marginBottom: '20px',
+          gap: '20px'
+        }}>
+          <label htmlFor="major" style={{ 
+            minWidth: '130px', 
+            fontWeight: '700', 
+            color: isDarkTheme ? '#ddd6fe' : '#1e40af',
+            fontSize: '15px',
+            textShadow: isDarkTheme ? '0 1px 2px rgba(0,0,0,0.3)' : '0 1px 2px rgba(30, 64, 175, 0.2)'
+          }}>
+            Major
+          </label>
+          <Input
+            id="major"
+            type="text"
+            onChange={(e) => setCurrentEducation({ ...currentEducation, major: e.target.value })}
+            value={currentEducation.major}
+            placeholder="Computer Science"
             className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
               isDarkTheme 
                 ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
@@ -143,7 +213,9 @@ function Education({
                 alignItems: 'center',
                 borderBottom: index < educationList.length - 1 ? (isDarkTheme ? '1px solid #6b7280' : '1px solid #e5e7eb') : 'none'
               }}>
-                <span style={{ flex: 1, color: isDarkTheme ? '#f3f4f6' : '#000' }}>{education.degree} - {education.institution} ({education.year})</span>
+                <span style={{ flex: 1, color: isDarkTheme ? '#f3f4f6' : '#000' }}>
+                  {education.degree} - {education.institution} ({education.month} {education.year}){education.major ? ` - ${education.major}` : ''}
+                </span>
                 <div style={{ display: 'flex', gap: '5px' }}>
                   <Button
                     onClick={() => editEducation(index)}
