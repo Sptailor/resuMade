@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 function Experience({
   currentExperience,
@@ -12,6 +13,48 @@ function Experience({
   editingIndex,
   isDarkTheme
 }) {
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!currentExperience.title.trim()) {
+      newErrors.title = 'Job title is required';
+    }
+    
+    if (!currentExperience.company.trim()) {
+      newErrors.company = 'Company is required';
+    }
+    
+    if (!currentExperience.years.trim()) {
+      newErrors.years = 'Years are required';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      if (editingIndex !== null) {
+        updateExperience();
+      } else {
+        addExperience();
+      }
+      setErrors({});
+    }
+  };
+
+  const handleFieldChange = (field, value) => {
+    setCurrentExperience({ ...currentExperience, [field]: value });
+    
+    // Clear error for this field when user starts typing
+    if (errors[field]) {
+      const newErrors = { ...errors };
+      delete newErrors[field];
+      setErrors(newErrors);
+    }
+  };
   return (
     <div>
       {/* Clean Form */}
@@ -42,18 +85,30 @@ function Experience({
           }}>
             Job Title *
           </label>
-          <Input
-            id="title"
-            type="text"
-            placeholder="Software Engineer"
-            value={currentExperience.title}
-            onChange={(e) => setCurrentExperience({ ...currentExperience, title: e.target.value })}
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
-                : 'bg-white border-purple-300 focus:border-purple-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="title"
+              type="text"
+              placeholder="Software Engineer"
+              value={currentExperience.title}
+              onChange={(e) => handleFieldChange('title', e.target.value)}
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.title
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
+              }`}
+            />
+            {errors.title && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.title}
+              </div>
+            )}
+          </div>
         </div>
         
         <div style={{ 
@@ -71,18 +126,30 @@ function Experience({
           }}>
             Company *
           </label>
-          <Input
-            id="company"
-            type="text"
-            placeholder="Company Name"
-            value={currentExperience.company}
-            onChange={(e) => setCurrentExperience({ ...currentExperience, company: e.target.value })}
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
-                : 'bg-white border-purple-300 focus:border-purple-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="company"
+              type="text"
+              placeholder="Company Name"
+              value={currentExperience.company}
+              onChange={(e) => handleFieldChange('company', e.target.value)}
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.company
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
+              }`}
+            />
+            {errors.company && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.company}
+              </div>
+            )}
+          </div>
         </div>
         
         <div style={{ 
@@ -100,18 +167,30 @@ function Experience({
           }}>
             Years *
           </label>
-          <Input
-            id="years"
-            type="text"
-            placeholder="2021-2024"
-            value={currentExperience.years}
-            onChange={(e) => setCurrentExperience({ ...currentExperience, years: e.target.value })}
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
-                : 'bg-white border-purple-300 focus:border-purple-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="years"
+              type="text"
+              placeholder="2021-2024"
+              value={currentExperience.years}
+              onChange={(e) => handleFieldChange('years', e.target.value)}
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.years
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
+              }`}
+            />
+            {errors.years && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.years}
+              </div>
+            )}
+          </div>
         </div>
 
         <div style={{ 
@@ -130,22 +209,37 @@ function Experience({
           }}>
             Description
           </label>
-          <textarea
-            id="description"
-            placeholder="Brief description of your role and achievements..."
-            value={currentExperience.description}
-            onChange={(e) => setCurrentExperience({ ...currentExperience, description: e.target.value })}
-            rows="3"
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg resize-vertical ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
-                : 'bg-white border-purple-300 focus:border-purple-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <textarea
+              id="description"
+              placeholder="Brief description of your role and achievements..."
+              value={currentExperience.description}
+              onChange={(e) => {
+                if (e.target.value.length <= 400) {
+                  handleFieldChange('description', e.target.value);
+                }
+              }}
+              maxLength={400}
+              rows="3"
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg resize-vertical ${
+                isDarkTheme 
+                  ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
+                  : 'bg-white border-purple-300 focus:border-purple-600'
+              }`}
+            />
+            <div style={{ 
+              textAlign: 'right', 
+              fontSize: '12px', 
+              color: isDarkTheme ? '#9ca3af' : '#6b7280',
+              marginTop: '4px'
+            }}>
+              {currentExperience.description.length}/400 characters
+            </div>
+          </div>
         </div>
         
         <Button 
-          onClick={editingIndex !== null ? updateExperience : addExperience}
+          onClick={handleSubmit}
           className={`w-full py-3 px-6 font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] ${
             isDarkTheme 
               ? 'bg-gray-800 hover:bg-gray-700 text-white border-2 border-purple-400' 

@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 function Education({
   currentEducation, 
@@ -12,6 +13,54 @@ function Education({
   editingIndex,
   isDarkTheme
 }) {
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!currentEducation.degree.trim()) {
+      newErrors.degree = 'Degree is required';
+    }
+    
+    if (!currentEducation.institution.trim()) {
+      newErrors.institution = 'Institution is required';
+    }
+    
+    if (!currentEducation.month) {
+      newErrors.month = 'Month is required';
+    }
+    
+    if (!currentEducation.year.trim()) {
+      newErrors.year = 'Year is required';
+    } else if (!/^\d{4}$/.test(currentEducation.year)) {
+      newErrors.year = 'Year must be a 4-digit number';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      if (editingIndex !== null) {
+        updateEducation();
+      } else {
+        addEducation();
+      }
+      setErrors({});
+    }
+  };
+
+  const handleFieldChange = (field, value) => {
+    setCurrentEducation({ ...currentEducation, [field]: value });
+    
+    // Clear error for this field when user starts typing
+    if (errors[field]) {
+      const newErrors = { ...errors };
+      delete newErrors[field];
+      setErrors(newErrors);
+    }
+  };
 
   return (
     <div>
@@ -43,18 +92,30 @@ function Education({
           }}>
             Degree *
           </label>
-          <Input
-            id="degree"
-            type="text"
-            onChange={(e) => setCurrentEducation({ ...currentEducation, degree: e.target.value })}
-            value={currentEducation.degree}
-            placeholder="Bachelor of Science"
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
-                : 'bg-white border-blue-300 focus:border-blue-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="degree"
+              type="text"
+              onChange={(e) => handleFieldChange('degree', e.target.value)}
+              value={currentEducation.degree}
+              placeholder="Bachelor of Science"
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.degree
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+              }`}
+            />
+            {errors.degree && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.degree}
+              </div>
+            )}
+          </div>
         </div>
         
         <div style={{ 
@@ -72,18 +133,30 @@ function Education({
           }}>
             Institution *
           </label>
-          <Input
-            id="institution"
-            type="text"
-            onChange={(e) => setCurrentEducation({ ...currentEducation, institution: e.target.value })}
-            value={currentEducation.institution}
-            placeholder="University Name"
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
-                : 'bg-white border-blue-300 focus:border-blue-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="institution"
+              type="text"
+              onChange={(e) => handleFieldChange('institution', e.target.value)}
+              value={currentEducation.institution}
+              placeholder="University Name"
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.institution
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+              }`}
+            />
+            {errors.institution && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.institution}
+              </div>
+            )}
+          </div>
         </div>
         
         <div style={{ 
@@ -101,16 +174,17 @@ function Education({
           }}>
             Month *
           </label>
-          <select
-            id="month"
-            onChange={(e) => setCurrentEducation({ ...currentEducation, month: e.target.value })}
-            value={currentEducation.month}
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-blue-400 text-black focus:border-blue-300' 
-                : 'bg-white border-blue-300 focus:border-blue-600'
-            }`}
-          >
+          <div style={{ flex: 1 }}>
+            <select
+              id="month"
+              onChange={(e) => handleFieldChange('month', e.target.value)}
+              value={currentEducation.month}
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.month
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-black focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-black focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+              }`}
+            >
             <option value="">Select Month</option>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -124,7 +198,18 @@ function Education({
             <option value="October">October</option>
             <option value="November">November</option>
             <option value="December">December</option>
-          </select>
+            </select>
+            {errors.month && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.month}
+              </div>
+            )}
+          </div>
         </div>
 
         <div style={{ 
@@ -142,18 +227,30 @@ function Education({
           }}>
             Year *
           </label>
-          <Input
-            id="year"
-            type="text"
-            onChange={(e) => setCurrentEducation({ ...currentEducation, year: e.target.value })}
-            value={currentEducation.year}
-            placeholder="2024"
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
-                : 'bg-white border-blue-300 focus:border-blue-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="year"
+              type="text"
+              onChange={(e) => handleFieldChange('year', e.target.value)}
+              value={currentEducation.year}
+              placeholder="2024"
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                errors.year
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+              }`}
+            />
+            {errors.year && (
+              <div style={{
+                color: '#ef4444',
+                fontSize: '12px',
+                marginTop: '4px',
+                fontWeight: '500'
+              }}>
+                {errors.year}
+              </div>
+            )}
+          </div>
         </div>
 
         <div style={{ 
@@ -174,7 +271,7 @@ function Education({
           <Input
             id="major"
             type="text"
-            onChange={(e) => setCurrentEducation({ ...currentEducation, major: e.target.value })}
+            onChange={(e) => handleFieldChange('major', e.target.value)}
             value={currentEducation.major}
             placeholder="Computer Science"
             className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
@@ -186,7 +283,7 @@ function Education({
         </div>
         
         <Button 
-          onClick={editingIndex !== null ? updateEducation : addEducation}
+          onClick={handleSubmit}
           className={`w-full py-3 px-6 font-bold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] ${
             isDarkTheme 
               ? 'bg-gray-800 hover:bg-gray-700 text-white border-2 border-blue-400' 

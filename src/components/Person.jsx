@@ -1,6 +1,62 @@
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
 
 function Person({ personData, setPersonData, isDarkTheme }) {
+  const [errors, setErrors] = useState({});
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone) return true; // Phone is optional
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+  };
+
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    setPersonData({ ...personData, name: value });
+    
+    if (value.trim() === '') {
+      setErrors({ ...errors, name: 'Name is required' });
+    } else if (value.trim().length < 2) {
+      setErrors({ ...errors, name: 'Name must be at least 2 characters' });
+    } else {
+      const newErrors = { ...errors };
+      delete newErrors.name;
+      setErrors(newErrors);
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setPersonData({ ...personData, email: value });
+    
+    if (value.trim() === '') {
+      setErrors({ ...errors, email: 'Email is required' });
+    } else if (!validateEmail(value)) {
+      setErrors({ ...errors, email: 'Please enter a valid email address' });
+    } else {
+      const newErrors = { ...errors };
+      delete newErrors.email;
+      setErrors(newErrors);
+    }
+  };
+
+  const handlePhoneChange = (e) => {
+    const value = e.target.value;
+    setPersonData({ ...personData, phone: value });
+    
+    if (value.trim() !== '' && !validatePhone(value)) {
+      setErrors({ ...errors, phone: 'Please enter a valid phone number' });
+    } else {
+      const newErrors = { ...errors };
+      delete newErrors.phone;
+      setErrors(newErrors);
+    }
+  };
 
   return (
     <div style={{ 
@@ -29,19 +85,31 @@ function Person({ personData, setPersonData, isDarkTheme }) {
         }}>
           Full Name *
         </label>
-        <Input
-          id="name"
-          type="text"
-          value={personData.name}
-          onChange={(e) => setPersonData({ ...personData, name: e.target.value })}
-          placeholder="John Doe"
-          className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-            isDarkTheme 
-              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' 
-              : 'bg-white border-slate-200 focus:border-blue-500'
-          }`}
-          required
-        />
+        <div style={{ flex: 1 }}>
+          <Input
+            id="name"
+            type="text"
+            value={personData.name}
+            onChange={handleNameChange}
+            placeholder="John Doe"
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              errors.name
+                ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                : (isDarkTheme ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
+            }`}
+            required
+          />
+          {errors.name && (
+            <div style={{
+              color: '#ef4444',
+              fontSize: '12px',
+              marginTop: '4px',
+              fontWeight: '500'
+            }}>
+              {errors.name}
+            </div>
+          )}
+        </div>
       </div>
 
       <div style={{ 
@@ -59,19 +127,31 @@ function Person({ personData, setPersonData, isDarkTheme }) {
         }}>
           Email Address *
         </label>
-        <Input
-          id="email"
-          type="email"
-          value={personData.email}
-          onChange={(e) => setPersonData({ ...personData, email: e.target.value })}
-          placeholder="john@example.com"
-          className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-            isDarkTheme 
-              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' 
-              : 'bg-white border-slate-200 focus:border-blue-500'
-          }`}
-          required
-        />
+        <div style={{ flex: 1 }}>
+          <Input
+            id="email"
+            type="email"
+            value={personData.email}
+            onChange={handleEmailChange}
+            placeholder="john@example.com"
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              errors.email
+                ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                : (isDarkTheme ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
+            }`}
+            required
+          />
+          {errors.email && (
+            <div style={{
+              color: '#ef4444',
+              fontSize: '12px',
+              marginTop: '4px',
+              fontWeight: '500'
+            }}>
+              {errors.email}
+            </div>
+          )}
+        </div>
       </div>
 
       <div style={{ 
@@ -88,18 +168,30 @@ function Person({ personData, setPersonData, isDarkTheme }) {
         }}>
           Phone Number
         </label>
-        <Input
-          id="phone"
-          type="tel"
-          value={personData.phone}
-          onChange={(e) => setPersonData({ ...personData, phone: e.target.value })}
-          placeholder="+1 (555) 123-4567"
-          className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-            isDarkTheme 
-              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' 
-              : 'bg-white border-slate-200 focus:border-blue-500'
-          }`}
-        />
+        <div style={{ flex: 1 }}>
+          <Input
+            id="phone"
+            type="tel"
+            value={personData.phone}
+            onChange={handlePhoneChange}
+            placeholder="+1 (555) 123-4567"
+            className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              errors.phone
+                ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                : (isDarkTheme ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
+            }`}
+          />
+          {errors.phone && (
+            <div style={{
+              color: '#ef4444',
+              fontSize: '12px',
+              marginTop: '4px',
+              fontWeight: '500'
+            }}>
+              {errors.phone}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
