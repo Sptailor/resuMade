@@ -27,7 +27,7 @@ const [personData, setPersonData] = useState({
   const [editingExperienceIndex, setEditingExperienceIndex] = useState(null);
 
   const addEducation = () => {
-    if (currentEducation.degree || currentEducation.institution || currentEducation.year) {
+    if (currentEducation.degree && currentEducation.institution && currentEducation.year) {
       setEducationList([...educationList, currentEducation]);
       setCurrentEducation({ degree: "", institution: "", year: "" });
     }
@@ -51,7 +51,7 @@ const [personData, setPersonData] = useState({
   };
 
   const addExperience = () => {
-    if (currentExperience.title || currentExperience.company || currentExperience.years) {
+    if (currentExperience.title && currentExperience.company && currentExperience.years) {
       setExperienceList([...experienceList, currentExperience]);
       setCurrentExperience({ title: "", company: "", years: "" });
     }
@@ -85,7 +85,7 @@ const [personData, setPersonData] = useState({
         </div>
 
         <div className="px-8 py-12">
-          <form className="max-w-2xl mx-auto space-y-16">
+          <div className="max-w-2xl mx-auto space-y-16">
             {/* Personal Information Section */}
             <section className="bg-white rounded-2xl shadow-sm border border-gray-200/50 p-8">
               <div className="mb-8">
@@ -130,7 +130,7 @@ const [personData, setPersonData] = useState({
                 editingIndex={editingExperienceIndex}
               />
             </section>
-          </form>
+          </div>
         </div>
       </div>
 
