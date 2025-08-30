@@ -238,7 +238,11 @@ const [personData, setPersonData] = useState({
                   margin: 0,
                   fontSize: '14px',
                   lineHeight: '1.4',
-                  paddingTop: '3px'
+                  paddingTop: '3px',
+                  wordWrap: 'break-word',
+                  overflowWrap: 'break-word',
+                  maxWidth: '100%',
+                  textAlign: 'left'
                 }}>
                   {experience.description}
                 </p>
