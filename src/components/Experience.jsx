@@ -267,7 +267,7 @@ function Experience({
                 borderBottom: index < experienceList.length - 1 ? (isDarkTheme ? '1px solid #6b7280' : '1px solid #e5e7eb') : 'none'
               }}>
                 <span style={{ flex: 1, color: isDarkTheme ? '#f3f4f6' : '#000' }}>
-                  {experience.title} - {experience.company} ({experience.years}){experience.description ? ` - ${experience.description.substring(0, 50)}${experience.description.length > 50 ? '...' : ''}` : ''}
+                  {experience.title} - {experience.company}
                 </span>
                 <div style={{ display: 'flex', gap: '5px' }}>
                   <Button

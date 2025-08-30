@@ -311,7 +311,7 @@ function Education({
                 borderBottom: index < educationList.length - 1 ? (isDarkTheme ? '1px solid #6b7280' : '1px solid #e5e7eb') : 'none'
               }}>
                 <span style={{ flex: 1, color: isDarkTheme ? '#f3f4f6' : '#000' }}>
-                  {education.degree} - {education.institution} ({education.month} {education.year}){education.major ? ` - ${education.major}` : ''}
+                  {education.degree} - {education.institution}
                 </span>
                 <div style={{ display: 'flex', gap: '5px' }}>
                   <Button
