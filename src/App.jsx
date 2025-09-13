@@ -83,22 +83,26 @@ const [personData, setPersonData] = useState({
       backgroundColor: isDarkTheme ? '#111827' : '#f5f7fa',
       position: 'relative'
     }}>
-      {/* Theme Toggle Button - Fixed in corner */}
+      {/* Professional Theme Toggle Button */}
       <button 
         onClick={() => setIsDarkTheme(!isDarkTheme)}
-        className="fixed top-6 right-6 z-50 rounded-xl shadow-xl font-semibold transition-all duration-300 hover:scale-110 flex items-center justify-center text-sm border-2"
+        className="fixed top-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 hover:shadow-lg border backdrop-blur-sm"
         style={{
-          width: '50px',
-          height: '50px',
-          minWidth: '50px',
-          minHeight: '50px',
-          backgroundColor: isDarkTheme ? '#f3f4f6' : '#1f2937',
-          color: isDarkTheme ? '#1f2937' : '#f3f4f6',
-          borderColor: isDarkTheme ? '#e5e7eb' : '#374151'
+          backgroundColor: isDarkTheme ? 'rgba(31, 41, 55, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+          color: isDarkTheme ? '#f9fafb' : '#374151',
+          borderColor: isDarkTheme ? 'rgba(75, 85, 99, 0.3)' : 'rgba(209, 213, 219, 0.5)',
+          boxShadow: isDarkTheme 
+            ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)' 
+            : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
         }}
         title={isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       >
-        {isDarkTheme ? '☀️' : '🌙'}
+        <span style={{ fontSize: '16px', lineHeight: 1 }}>
+          {isDarkTheme ? '☀️' : '🌙'}
+        </span>
+        <span style={{ fontSize: '13px', fontWeight: '500' }}>
+          {isDarkTheme ? 'Light' : 'Dark'}
+        </span>
       </button>
       {/* Clean Form Panel */}
       <div className={`left-panel border-r overflow-y-auto ${isDarkTheme ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
