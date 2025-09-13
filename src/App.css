@@ -106,5 +106,14 @@
   font-weight: 500;
 }
 
+.month-select-black {
+  color: black !important;
+}
+
+.month-select-black option {
+  color: black !important;
+  background-color: white !important;
+}
+
 
 

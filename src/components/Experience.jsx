@@ -94,9 +94,10 @@ function Experience({
               onChange={(e) => handleFieldChange('title', e.target.value)}
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.title
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
               }`}
+              style={{ color: 'black' }}
             />
             {errors.title && (
               <div style={{
@@ -135,9 +136,10 @@ function Experience({
               onChange={(e) => handleFieldChange('company', e.target.value)}
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.company
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
               }`}
+              style={{ color: 'black' }}
             />
             {errors.company && (
               <div style={{
@@ -176,9 +178,10 @@ function Experience({
               onChange={(e) => handleFieldChange('years', e.target.value)}
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.years
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-purple-400 placeholder-gray-300 focus:border-purple-300' : 'bg-white border-purple-300 focus:border-purple-600')
               }`}
+              style={{ color: 'black' }}
             />
             {errors.years && (
               <div style={{
@@ -223,9 +226,10 @@ function Experience({
               rows="3"
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg resize-vertical ${
                 isDarkTheme 
-                  ? 'bg-gray-700 border-purple-400 text-white placeholder-gray-300 focus:border-purple-300' 
+                  ? 'bg-gray-700 border-purple-400 placeholder-gray-300 focus:border-purple-300' 
                   : 'bg-white border-purple-300 focus:border-purple-600'
               }`}
+              style={{ color: 'black' }}
             />
             <div style={{ 
               textAlign: 'right', 

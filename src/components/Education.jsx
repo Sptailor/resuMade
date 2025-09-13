@@ -101,9 +101,10 @@ function Education({
               placeholder="Bachelor of Science"
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.degree
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
               }`}
+              style={{ color: 'black' }}
             />
             {errors.degree && (
               <div style={{
@@ -142,9 +143,10 @@ function Education({
               placeholder="University Name"
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.institution
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
               }`}
+              style={{ color: 'black' }}
             />
             {errors.institution && (
               <div style={{
@@ -179,25 +181,28 @@ function Education({
               id="month"
               onChange={(e) => handleFieldChange('month', e.target.value)}
               value={currentEducation.month}
-              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+              className={`month-select-black w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.month
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-black focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-black focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
               }`}
+              style={{
+                color: 'black'
+              }}
             >
-            <option value="">Select Month</option>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
+            <option value="" style={{ backgroundColor: 'white', color: 'black' }}>Select Month</option>
+            <option value="January" style={{ backgroundColor: 'white', color: 'black' }}>January</option>
+            <option value="February" style={{ backgroundColor: 'white', color: 'black' }}>February</option>
+            <option value="March" style={{ backgroundColor: 'white', color: 'black' }}>March</option>
+            <option value="April" style={{ backgroundColor: 'white', color: 'black' }}>April</option>
+            <option value="May" style={{ backgroundColor: 'white', color: 'black' }}>May</option>
+            <option value="June" style={{ backgroundColor: 'white', color: 'black' }}>June</option>
+            <option value="July" style={{ backgroundColor: 'white', color: 'black' }}>July</option>
+            <option value="August" style={{ backgroundColor: 'white', color: 'black' }}>August</option>
+            <option value="September" style={{ backgroundColor: 'white', color: 'black' }}>September</option>
+            <option value="October" style={{ backgroundColor: 'white', color: 'black' }}>October</option>
+            <option value="November" style={{ backgroundColor: 'white', color: 'black' }}>November</option>
+            <option value="December" style={{ backgroundColor: 'white', color: 'black' }}>December</option>
             </select>
             {errors.month && (
               <div style={{
@@ -236,9 +241,10 @@ function Education({
               placeholder="2024"
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.year
-                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
+                  ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-300 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                  : (isDarkTheme ? 'bg-gray-700 border-blue-400 placeholder-gray-300 focus:border-blue-300' : 'bg-white border-blue-300 focus:border-blue-600')
               }`}
+              style={{ color: 'black' }}
             />
             {errors.year && (
               <div style={{
@@ -268,18 +274,20 @@ function Education({
           }}>
             Major
           </label>
-          <Input
-            id="major"
-            type="text"
-            onChange={(e) => handleFieldChange('major', e.target.value)}
-            value={currentEducation.major}
-            placeholder="Computer Science"
-            className={`flex-1 px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
-              isDarkTheme 
-                ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
-                : 'bg-white border-blue-300 focus:border-blue-600'
-            }`}
-          />
+          <div style={{ flex: 1 }}>
+            <Input
+              id="major"
+              type="text"
+              onChange={(e) => handleFieldChange('major', e.target.value)}
+              value={currentEducation.major}
+              placeholder="Computer Science"
+              className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
+                isDarkTheme 
+                  ? 'bg-gray-700 border-blue-400 text-white placeholder-gray-300 focus:border-blue-300' 
+                  : 'bg-white border-blue-300 focus:border-blue-600'
+              }`}
+            />
+          </div>
         </div>
         
         <Button 

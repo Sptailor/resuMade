@@ -94,9 +94,10 @@ function Person({ personData, setPersonData, isDarkTheme }) {
             placeholder="John Doe"
             className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
               errors.name
-                ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                : (isDarkTheme ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
+                ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                : (isDarkTheme ? 'bg-gray-700 border-gray-600 placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
             }`}
+            style={{ color: 'black' }}
             required
           />
           {errors.name && (
@@ -136,9 +137,10 @@ function Person({ personData, setPersonData, isDarkTheme }) {
             placeholder="john@example.com"
             className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
               errors.email
-                ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                : (isDarkTheme ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
+                ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                : (isDarkTheme ? 'bg-gray-700 border-gray-600 placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
             }`}
+            style={{ color: 'black' }}
             required
           />
           {errors.email && (
@@ -177,9 +179,10 @@ function Person({ personData, setPersonData, isDarkTheme }) {
             placeholder="+1 (555) 123-4567"
             className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
               errors.phone
-                ? (isDarkTheme ? 'bg-gray-700 border-red-400 text-white placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
-                : (isDarkTheme ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
+                ? (isDarkTheme ? 'bg-gray-700 border-red-400 placeholder-gray-400 focus:border-red-300' : 'bg-white border-red-400 focus:border-red-500')
+                : (isDarkTheme ? 'bg-gray-700 border-gray-600 placeholder-gray-400 focus:border-blue-400' : 'bg-white border-slate-200 focus:border-blue-500')
             }`}
+            style={{ color: 'black' }}
           />
           {errors.phone && (
             <div style={{
