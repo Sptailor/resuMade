@@ -52,8 +52,8 @@ function Education({
   };
 
   const handleFieldChange = (field, value) => {
-    setCurrentEducation({ ...currentEducation, [field]: value });
-    
+    setCurrentEducation({ ...currentEducation, [field]: value });// Update the current education state
+
     // Clear error for this field when user starts typing
     if (errors[field]) {
       const newErrors = { ...errors };
@@ -96,7 +96,7 @@ function Education({
             <Input
               id="degree"
               type="text"
-              onChange={(e) => handleFieldChange('degree', e.target.value)}
+              onChange={(e) => handleFieldChange('degree', e.target.value)}// Handle degree change
               value={currentEducation.degree}
               placeholder="Bachelor of Science"
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
