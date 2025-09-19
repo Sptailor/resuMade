@@ -4,7 +4,7 @@ import { useState } from "react"
 function Person({ personData, setPersonData, isDarkTheme }) {
   const [errors, setErrors] = useState({});
 
-  const validateEmail = (email) => {
+  const validateEmail = (email) => {// Simple email regex for validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -15,7 +15,7 @@ function Person({ personData, setPersonData, isDarkTheme }) {
     return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
   };
 
-  const handleNameChange = (e) => {
+  const handleNameChange = (e) => {// Handle name change
     const value = e.target.value;
     setPersonData({ ...personData, name: value });
     
@@ -30,7 +30,7 @@ function Person({ personData, setPersonData, isDarkTheme }) {
     }
   };
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e) => {// Handle email change
     const value = e.target.value;
     setPersonData({ ...personData, email: value });
     
@@ -45,7 +45,7 @@ function Person({ personData, setPersonData, isDarkTheme }) {
     }
   };
 
-  const handlePhoneChange = (e) => {
+  const handlePhoneChange = (e) => {// Handle phone change
     const value = e.target.value;
     setPersonData({ ...personData, phone: value });
     
@@ -59,7 +59,7 @@ function Person({ personData, setPersonData, isDarkTheme }) {
   };
 
   return (
-    <div style={{ 
+    <div style={{ // Container styles
       background: isDarkTheme 
         ? 'linear-gradient(145deg, #374151 0%, #4b5563 100%)'
         : 'linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%)',
