@@ -34,7 +34,7 @@ function Experience({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = () => {// Handle form submission
     if (validateForm()) {
       if (editingIndex !== null) {
         updateExperience();
@@ -45,7 +45,7 @@ function Experience({
     }
   };
 
-  const handleFieldChange = (field, value) => {
+  const handleFieldChange = (field, value) => { // Handle field changes
     setCurrentExperience({ ...currentExperience, [field]: value });
     
     // Clear error for this field when user starts typing
@@ -132,7 +132,7 @@ function Experience({
               id="company"
               type="text"
               placeholder="Company Name"
-              value={currentExperience.company}
+              value={currentExperience.company}// Company name value
               onChange={(e) => handleFieldChange('company', e.target.value)}
               className={`w-full px-4 py-3 border-2 rounded-xl focus:outline-none transition-all duration-200 shadow-sm hover:shadow-md focus:shadow-lg ${
                 errors.company
