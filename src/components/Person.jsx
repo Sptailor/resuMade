@@ -60,13 +60,15 @@ function Person({ personData, setPersonData, isDarkTheme }) {
 
   return (
     <div style={{ // Container styles
-      background: isDarkTheme 
+      width: '48vw',
+      margin: '2%',
+      background: isDarkTheme
         ? 'linear-gradient(145deg, #374151 0%, #4b5563 100%)'
         : 'linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%)',
-      padding: '24px', 
-      borderRadius: '16px', 
+      padding: '24px',
+      borderRadius: '16px',
       border: isDarkTheme ? '1px solid #6b7280' : '1px solid #cbd5e1',
-      boxShadow: isDarkTheme 
+      boxShadow: isDarkTheme
         ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)'
         : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
     }}>

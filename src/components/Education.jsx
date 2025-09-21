@@ -65,11 +65,13 @@ function Education({
   return (
     <div>
       {/* Clean Form */}
-      <div style={{ 
-        background: isDarkTheme 
-          ? 'linear-gradient(145deg, #1e3a8a 0%, #3730a3 100%)' 
-          : 'linear-gradient(145deg, #dbeafe 0%, #bfdbfe 100%)', 
-        padding: '24px', 
+      <div style={{
+        width: '48vw',
+        margin: '2%',
+        background: isDarkTheme
+          ? 'linear-gradient(145deg, #1e3a8a 0%, #3730a3 100%)'
+          : 'linear-gradient(145deg, #dbeafe 0%, #bfdbfe 100%)',
+        padding: '24px',
         borderRadius: '16px', 
         border: isDarkTheme ? '1px solid #4338ca' : '1px solid #93c5fd',
         marginBottom: '20px',

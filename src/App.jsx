@@ -149,13 +149,10 @@ const [personData, setPersonData] = useState({
             <h1
               className="text-4xl font-bold tracking-tight leading-tight"
               style={{
-                background: isDarkTheme
-                  ? 'linear-gradient(135deg, #0f172a 0%, #334155 100%)'
-                  : 'linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textShadow: isDarkTheme ? 'none' : '0 1px 2px rgba(0, 0, 0, 0.1)'
+                color: isDarkTheme ? '#f1f5f9' : '#1e293b',
+                textShadow: isDarkTheme
+                  ? '0 1px 2px rgba(0, 0, 0, 0.3)'
+                  : '0 1px 2px rgba(0, 0, 0, 0.1)'
               }}
             >
               Resume Builder
@@ -173,7 +170,7 @@ const [personData, setPersonData] = useState({
         </div>
 
         <div className="px-8 py-8">
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="space-y-8">
             {/* Personal Information Section */}
             <section
               className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
