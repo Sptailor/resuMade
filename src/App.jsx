@@ -79,58 +79,176 @@ const [personData, setPersonData] = useState({
   };
 
   return (
-    <div className={`cv-builder ${isDarkTheme ? 'dark-theme' : ''}`} style={{
-      backgroundColor: isDarkTheme ? '#111827' : '#f5f7fa',
-      position: 'relative'
-    }}>
-      {/* Professional Theme Toggle Button */}
-      <button 
+    <>
+      {/* Professional Theme Toggle Button - Independent */}
+      <button
         onClick={() => setIsDarkTheme(!isDarkTheme)}
-        className="fixed top-6 right-6 z-50 flex items-center justify-center rounded-lg font-medium transition-all duration-300 hover:shadow-lg border backdrop-blur-sm"
+        className="fixed top-6 right-6 z-50 flex items-center justify-center rounded-xl font-medium transition-all duration-300 hover:shadow-2xl border backdrop-blur-md"
         style={{
-          width: '50px',
-          height: '50px',
-          backgroundColor: isDarkTheme ? 'rgba(31, 41, 55, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-          color: isDarkTheme ? '#f9fafb' : '#374151',
-          borderColor: isDarkTheme ? 'rgba(75, 85, 99, 0.3)' : 'rgba(209, 213, 219, 0.5)',
-          boxShadow: isDarkTheme 
-            ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)' 
-            : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-          fontSize: '18px'
+          width: '56px',
+          height: '56px',
+          background: isDarkTheme
+            ? 'linear-gradient(135deg, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)'
+            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+          color: isDarkTheme ? '#f1f5f9' : '#334155',
+          borderColor: isDarkTheme ? 'rgba(148, 163, 184, 0.2)' : 'rgba(203, 213, 225, 0.6)',
+          boxShadow: isDarkTheme
+            ? '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+            : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
+          fontSize: '20px',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)'
         }}
         title={isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       >
         {isDarkTheme ? '☀️' : '🌙'}
       </button>
-      {/* Clean Form Panel */}
-      <div className={`left-panel border-r overflow-y-auto ${isDarkTheme ? 'bg-gray-900 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
-        {/* Form Header */}
-        <div className={`sticky top-0 backdrop-blur-sm border-b px-8 py-6 z-10 shadow-sm ${isDarkTheme ? 'bg-gray-800/95 border-gray-700' : 'bg-white/95 border-gray-200'}`}>
-          <div className="mb-2">
-            <h1 className={`text-3xl font-bold tracking-tight ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Resume Builder</h1>
+
+      <div className={`cv-builder ${isDarkTheme ? 'dark-theme' : ''}`} style={{
+        background: isDarkTheme
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
+          : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)',
+        position: 'relative',
+        minHeight: '100vh'
+      }}>
+        {/* Professional Glass Form Panel */}
+      <div
+        className="left-panel border-r overflow-y-auto"
+        style={{
+          background: isDarkTheme
+            ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%)'
+            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.85) 100%)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRight: isDarkTheme
+            ? '1px solid rgba(148, 163, 184, 0.2)'
+            : '1px solid rgba(203, 213, 225, 0.4)',
+          boxShadow: isDarkTheme
+            ? 'inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1)'
+            : 'inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(0, 0, 0, 0.05)'
+        }}
+      >
+        {/* Glassmorphic Form Header */}
+        <div
+          className="sticky top-0 z-10 px-8 py-8"
+          style={{
+            background: isDarkTheme
+              ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            borderBottom: isDarkTheme
+              ? '1px solid rgba(148, 163, 184, 0.2)'
+              : '1px solid rgba(203, 213, 225, 0.4)',
+            boxShadow: isDarkTheme
+              ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+              : '0 4px 6px -1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+          }}
+        >
+          <div className="mb-3">
+            <h1
+              className="text-4xl font-bold tracking-tight leading-tight"
+              style={{
+                background: isDarkTheme
+                  ? 'linear-gradient(135deg, #0f172a 0%, #334155 100%)'
+                  : 'linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: isDarkTheme ? 'none' : '0 1px 2px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              Resume Builder
+            </h1>
           </div>
-          <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Create your professional resume with ease</p>
+          <p
+            className="text-lg leading-relaxed"
+            style={{
+              color: isDarkTheme ? 'rgba(203, 213, 225, 0.9)' : 'rgba(51, 65, 85, 0.8)',
+              fontWeight: 400
+            }}
+          >
+            Create your professional resume with ease
+          </p>
         </div>
 
         <div className="px-8 py-8">
-          <div className="max-w-2xl mx-auto space-y-10">
+          <div className="max-w-4xl mx-auto space-y-8">
             {/* Personal Information Section */}
-            <section className={`rounded-2xl shadow-sm border p-6 ${isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200/50'}`}>
+            <section
+              className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
+              style={{
+                background: isDarkTheme
+                  ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.7) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: isDarkTheme
+                  ? '1px solid rgba(148, 163, 184, 0.2)'
+                  : '1px solid rgba(203, 213, 225, 0.3)',
+                boxShadow: isDarkTheme
+                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+              }}
+            >
               <div className="mb-6">
-                <h2 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Personal Information</h2>
-                <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Tell us about yourself</p>
+                <h2
+                  className="text-2xl font-semibold mb-2 tracking-tight"
+                  style={{
+                    color: isDarkTheme ? '#f1f5f9' : '#0f172a'
+                  }}
+                >
+                  Personal Information
+                </h2>
+                <p
+                  style={{
+                    color: isDarkTheme ? 'rgba(203, 213, 225, 0.8)' : 'rgba(51, 65, 85, 0.7)',
+                    fontSize: '16px'
+                  }}
+                >
+                  Tell us about yourself
+                </p>
               </div>
               <Person personData={personData} setPersonData={setPersonData} isDarkTheme={isDarkTheme} />
             </section>
 
             {/* Education Section */}
-            <section className={`rounded-2xl shadow-sm border p-6 ${isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200/50'}`}>
+            <section
+              className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
+              style={{
+                background: isDarkTheme
+                  ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.7) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: isDarkTheme
+                  ? '1px solid rgba(148, 163, 184, 0.2)'
+                  : '1px solid rgba(203, 213, 225, 0.3)',
+                boxShadow: isDarkTheme
+                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+              }}
+            >
               <div className="mb-6">
-                <h2 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Education</h2>
-                <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Your academic background</p>
+                <h2
+                  className="text-2xl font-semibold mb-2 tracking-tight"
+                  style={{
+                    color: isDarkTheme ? '#f1f5f9' : '#0f172a'
+                  }}
+                >
+                  Education
+                </h2>
+                <p
+                  style={{
+                    color: isDarkTheme ? 'rgba(203, 213, 225, 0.8)' : 'rgba(51, 65, 85, 0.7)',
+                    fontSize: '16px'
+                  }}
+                >
+                  Your academic background
+                </p>
               </div>
-              <Education 
-                currentEducation={currentEducation} 
+              <Education
+                currentEducation={currentEducation}
                 setCurrentEducation={setCurrentEducation}
                 educationList={educationList}
                 addEducation={addEducation}
@@ -143,12 +261,41 @@ const [personData, setPersonData] = useState({
             </section>
 
             {/* Work Experience Section */}
-            <section className={`rounded-2xl shadow-sm border p-6 ${isDarkTheme ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200/50'}`}>
+            <section
+              className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
+              style={{
+                background: isDarkTheme
+                  ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.7) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: isDarkTheme
+                  ? '1px solid rgba(148, 163, 184, 0.2)'
+                  : '1px solid rgba(203, 213, 225, 0.3)',
+                boxShadow: isDarkTheme
+                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+              }}
+            >
               <div className="mb-6">
-                <h2 className={`text-xl font-semibold mb-2 ${isDarkTheme ? 'text-white' : 'text-gray-900'}`}>Work Experience</h2>
-                <p className={`${isDarkTheme ? 'text-gray-300' : 'text-gray-600'}`}>Your professional journey</p>
+                <h2
+                  className="text-2xl font-semibold mb-2 tracking-tight"
+                  style={{
+                    color: isDarkTheme ? '#f1f5f9' : '#0f172a'
+                  }}
+                >
+                  Work Experience
+                </h2>
+                <p
+                  style={{
+                    color: isDarkTheme ? 'rgba(203, 213, 225, 0.8)' : 'rgba(51, 65, 85, 0.7)',
+                    fontSize: '16px'
+                  }}
+                >
+                  Your professional journey
+                </p>
               </div>
-              <Experience 
+              <Experience
                 currentExperience={currentExperience}
                 setCurrentExperience={setCurrentExperience}
                 experienceList={experienceList}
@@ -254,6 +401,7 @@ const [personData, setPersonData] = useState({
         </div>
       </div>
     </div>
+    </>
   );
 }
 

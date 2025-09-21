@@ -1,35 +1,49 @@
 /* Container for the entire CV builder */
 .cv-builder {
   display: flex;
-  gap: 20px;            /* space between left and right panels */
-  width: 100vw;         /* full viewport width */
-  height: 100vh;        /* full viewport height */
-  padding: 20px;
+  gap: 24px;
+  width: 100vw;
+  height: 100vh;
+  padding: 24px;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Light theme (default) */
-.cv-builder {
-  background-color: #f5f7fa;
-}
-
-.cv-builder.dark-theme {
-  background-color: #111827;
-}
-
-/* Left panel with form inputs */
+/* Enhanced glass panel styling */
 .left-panel {
-  flex: 1;
-  border-radius: 6px;
-  padding: 20px;
+  flex: 1.4;
+  border-radius: 20px;
   box-sizing: border-box;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 0;
+  position: relative;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+
+/* Custom scrollbar for webkit browsers */
+.left-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.left-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.left-panel::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+}
+
+.left-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
 }
 
 /* Right panel with preview */
@@ -154,16 +168,116 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 500;
   letter-spacing: 0.01em;
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+  color: #374151;
+}
+
+.cv-builder.dark-theme label {
+  color: #d1d5db;
+}
+
+/* Form group spacing */
+.cv-builder .form-group {
+  margin-bottom: 20px;
+}
+
+.cv-builder .form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.cv-builder .form-row > * {
+  flex: 1;
+}
+
+/* Professional animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cv-builder section {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Enhanced focus states */
+.cv-builder *:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Professional hover states for interactive elements */
+.cv-builder section:hover {
+  transform: translateY(-2px);
+}
+
+/* Smooth transitions for all elements */
+.cv-builder * {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Professional input and textarea styling */
 .cv-builder input,
 .cv-builder textarea,
 .cv-builder select {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  font-size: 0.95rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 15px;
   letter-spacing: 0.01em;
-  width: 70%;
+  width: 75%;
+  max-width: 400px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  color: #1e293b;
+}
+
+.cv-builder input::placeholder,
+.cv-builder textarea::placeholder {
+  color: #94a3b8;
+}
+
+.cv-builder input:focus,
+.cv-builder textarea:focus,
+.cv-builder select:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12), 0 4px 12px -2px rgba(99, 102, 241, 0.15);
+  transform: translateY(-1px);
+}
+
+.cv-builder.dark-theme input,
+.cv-builder.dark-theme textarea,
+.cv-builder.dark-theme select {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.cv-builder.dark-theme input::placeholder,
+.cv-builder.dark-theme textarea::placeholder {
+  color: #64748b;
+}
+
+.cv-builder.dark-theme input:focus,
+.cv-builder.dark-theme textarea:focus,
+.cv-builder.dark-theme select:focus {
+  background: #1e293b;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), 0 4px 12px -2px rgba(99, 102, 241, 0.2);
 }
 
 /* Button professional styling */
@@ -171,6 +285,51 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 500;
   letter-spacing: 0.025em;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.25);
+  font-size: 14px;
+}
+
+.cv-builder button:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.35);
+  transform: translateY(-1px);
+}
+
+.cv-builder button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.25);
+}
+
+/* Secondary button styles */
+.cv-builder button.secondary {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  color: #475569;
+}
+
+.cv-builder button.secondary:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px -2px rgba(71, 85, 105, 0.15);
+}
+
+.cv-builder.dark-theme button.secondary {
+  background: #334155;
+  border-color: #475569;
+  color: #cbd5e1;
+}
+
+.cv-builder.dark-theme button.secondary:hover {
+  background: #475569;
+  border-color: #64748b;
+  box-shadow: 0 4px 12px -2px rgba(51, 65, 85, 0.3);
 }
 
 /* Resume section professional fonts */
