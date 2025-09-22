@@ -1,3 +1,8 @@
+/* Global reset */
+body {
+  margin: 0;
+}
+
 /* Container for the entire CV builder */
 .cv-builder {
   display: flex;
@@ -26,6 +31,25 @@
   min-height: 0;
   scrollbar-width: thin;
   scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Light theme left panel */
+.left-panel-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-right: 2px solid #1e40af;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1),
+              0 4px 12px rgba(0, 0, 0, 0.05),
+              0 2px 4px rgba(30, 58, 138, 0.1);
+}
+
+/* Dark theme left panel */
+.left-panel-dark {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%);
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -362,6 +386,133 @@
 /* Import Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Theme Toggle Button Styles */
+#theme-toggle-button {
+  position: absolute;
+  left: 16px;
+  top: 40px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 2px;
+  border-radius: 1rem;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#theme-toggle-button:hover {
+  transform: scale(1.1) rotate(12deg);
+}
+
+/* Light theme button styles */
+.theme-toggle-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #1e3a8a;
+  border: 2px solid #1e40af;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2),
+              0 2px 4px rgba(0, 0, 0, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Dark theme button styles */
+.theme-toggle-dark {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 50%, rgba(236, 72, 153, 0.15) 100%),
+              linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 6px 12px -2px rgba(59, 130, 246, 0.2),
+              inset 0 2px 4px rgba(251, 191, 36, 0.1);
+}
+
+/* Button emoji styling */
+.theme-toggle-emoji {
+  display: block;
+  line-height: 1;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-emoji:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle-emoji-light {
+  filter: drop-shadow(0 0 4px rgba(30, 58, 138, 0.4));
+  text-shadow: 0 0 6px rgba(30, 64, 175, 0.5);
+}
+
+.theme-toggle-emoji-dark {
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.4));
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+/* Header styles */
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  position: relative;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.header-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-bottom: 2px solid #1e40af;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08),
+              0 2px 4px rgba(30, 58, 138, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.header-dark {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Title styles */
+.main-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin: 0 0 12px 0;
+}
+
+.main-title-light {
+  color: #000000;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.main-title-dark {
+  color: #f1f5f9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtitle styles */
+.main-subtitle {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  font-weight: 400;
+  margin: 0;
+}
+
+.main-subtitle-light {
+  color: #1f2937;
+}
+
+.main-subtitle-dark {
+  color: rgba(203, 213, 225, 0.9);
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .cv-builder {
@@ -372,5 +523,13 @@
     flex: unset;
     width: 100%;
     height: 50vh;
+  }
+
+  #theme-toggle-button {
+    left: 16px;
+    top: 40px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }
