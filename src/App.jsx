@@ -80,30 +80,6 @@ const [personData, setPersonData] = useState({
 
   return (
     <>
-      {/* Professional Theme Toggle Button - Independent */}
-      <button
-        onClick={() => setIsDarkTheme(!isDarkTheme)}
-        className="fixed top-6 right-6 z-50 flex items-center justify-center rounded-xl font-medium transition-all duration-300 hover:shadow-2xl border backdrop-blur-md"
-        style={{
-          width: '56px',
-          height: '56px',
-          background: isDarkTheme
-            ? 'linear-gradient(135deg, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%)'
-            : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%)',
-          color: isDarkTheme ? '#f1f5f9' : '#334155',
-          borderColor: isDarkTheme ? 'rgba(148, 163, 184, 0.2)' : 'rgba(203, 213, 225, 0.6)',
-          boxShadow: isDarkTheme
-            ? '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-            : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
-          fontSize: '20px',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)'
-        }}
-        title={isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-      >
-        {isDarkTheme ? '☀️' : '🌙'}
-      </button>
-
       <div className={`cv-builder ${isDarkTheme ? 'dark-theme' : ''}`} style={{
         background: isDarkTheme
           ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
@@ -113,7 +89,7 @@ const [personData, setPersonData] = useState({
       }}>
         {/* Professional Glass Form Panel */}
       <div
-        className="left-panel border-r overflow-y-auto"
+        className="left-panel border-r overflow-y-auto relative"
         style={{
           background: isDarkTheme
             ? 'linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.85) 100%)'
@@ -145,7 +121,7 @@ const [personData, setPersonData] = useState({
               : '0 4px 6px -1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
           }}
         >
-          <div className="mb-3">
+          <div className="flex items-center gap-4 mb-3">
             <h1
               className="text-4xl font-bold tracking-tight leading-tight"
               style={{
@@ -157,7 +133,58 @@ const [personData, setPersonData] = useState({
             >
               Resume Builder
             </h1>
+
+            {/* Enhanced Theme Toggle Button - Next to Title */}
+            <button
+              onClick={() => setIsDarkTheme(!isDarkTheme)}
+              className="group inline-flex items-center justify-center rounded-2xl font-medium transition-all duration-500 hover:scale-110 hover:rotate-12 border backdrop-blur-xl"
+              style={{
+                width: '48px',
+                height: '48px',
+                background: isDarkTheme
+                  ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 50%, rgba(236, 72, 153, 0.15) 100%), linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)'
+                  : 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%), linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%)',
+                color: isDarkTheme ? '#fbbf24' : '#3730a3',
+                borderColor: isDarkTheme ? 'rgba(251, 191, 36, 0.3)' : 'rgba(55, 48, 163, 0.2)',
+                borderWidth: '2px',
+                boxShadow: isDarkTheme
+                  ? '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 6px 12px -2px rgba(59, 130, 246, 0.2), inset 0 2px 4px rgba(251, 191, 36, 0.1)'
+                  : '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 6px 12px -2px rgba(59, 130, 246, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.9)',
+                fontSize: '18px',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}
+              title={isDarkTheme ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'scale(1.1) rotate(12deg)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'scale(1) rotate(0deg)';
+              }}
+            >
+              <span
+                className="transition-all duration-500 group-hover:scale-110"
+                style={{
+                  filter: isDarkTheme
+                    ? 'drop-shadow(0 0 6px rgba(251, 191, 36, 0.4))'
+                    : 'drop-shadow(0 0 4px rgba(55, 48, 163, 0.3))',
+                  textShadow: isDarkTheme
+                    ? '0 0 8px rgba(251, 191, 36, 0.6)'
+                    : '0 0 6px rgba(55, 48, 163, 0.4)',
+                  display: 'block',
+                  lineHeight: '1'
+                }}
+              >
+                {isDarkTheme ? '☀️' : '🌙'}
+              </span>
+            </button>
           </div>
+
           <p
             className="text-lg leading-relaxed"
             style={{
