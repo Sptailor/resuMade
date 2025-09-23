@@ -285,11 +285,20 @@ body {
 }
 
 .cv-builder.dark-theme input,
-.cv-builder.dark-theme textarea,
+.cv-builder.dark-theme textarea {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
 .cv-builder.dark-theme select {
   background: #1e293b;
   border-color: #475569;
   color: #f1f5f9;
+}
+
+.cv-builder.dark-theme .month-select-black {
+  color: #94a3b8 !important;
 }
 
 .cv-builder.dark-theme input::placeholder,
@@ -298,7 +307,12 @@ body {
 }
 
 .cv-builder.dark-theme input:focus,
-.cv-builder.dark-theme textarea:focus,
+.cv-builder.dark-theme textarea:focus {
+  background: #1e293b;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25), 0 4px 12px -2px rgba(99, 102, 241, 0.2);
+}
+
 .cv-builder.dark-theme select:focus {
   background: #1e293b;
   border-color: #6366f1;
