@@ -82,8 +82,8 @@ const [personData, setPersonData] = useState({
     <>
       <div className={`cv-builder ${isDarkTheme ? 'dark-theme' : ''}`} style={{
         background: isDarkTheme
-          ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
-          : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%)',
+          ? 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 30%, #581c87 60%, #1e293b 100%)'
+          : 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 25%, #e2e8f0 50%, #f8fafc 75%, #ffffff 100%)',
         position: 'relative',
         minHeight: '100vh'
       }}>
@@ -121,16 +121,16 @@ const [personData, setPersonData] = useState({
               className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
               style={{
                 background: isDarkTheme
-                  ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%)'
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.7) 100%)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                  ? 'linear-gradient(135deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.2) 50%, rgba(17, 24, 39, 0.7) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.85) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
                 border: isDarkTheme
-                  ? '1px solid rgba(148, 163, 184, 0.2)'
-                  : '1px solid rgba(203, 213, 225, 0.3)',
+                  ? '1px solid rgba(147, 51, 234, 0.3)'
+                  : '1px solid rgba(71, 85, 105, 0.12)',
                 boxShadow: isDarkTheme
-                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                  : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+                  ? '0 12px 20px -3px rgba(147, 51, 234, 0.2), 0 6px 12px -2px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  : '0 8px 25px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(71, 85, 105, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1)'
               }}
             >
               <div className="mb-6">
@@ -159,16 +159,16 @@ const [personData, setPersonData] = useState({
               className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
               style={{
                 background: isDarkTheme
-                  ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%)'
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.7) 100%)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                  ? 'linear-gradient(135deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.2) 50%, rgba(17, 24, 39, 0.7) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.85) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
                 border: isDarkTheme
-                  ? '1px solid rgba(148, 163, 184, 0.2)'
-                  : '1px solid rgba(203, 213, 225, 0.3)',
+                  ? '1px solid rgba(147, 51, 234, 0.3)'
+                  : '1px solid rgba(71, 85, 105, 0.12)',
                 boxShadow: isDarkTheme
-                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                  : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+                  ? '0 12px 20px -3px rgba(147, 51, 234, 0.2), 0 6px 12px -2px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  : '0 8px 25px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(71, 85, 105, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1)'
               }}
             >
               <div className="mb-6">
@@ -207,16 +207,16 @@ const [personData, setPersonData] = useState({
               className="rounded-2xl p-8 transition-all duration-300 hover:shadow-xl"
               style={{
                 background: isDarkTheme
-                  ? 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.6) 100%)'
-                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(248, 250, 252, 0.7) 100%)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                  ? 'linear-gradient(135deg, rgba(55, 48, 163, 0.2) 0%, rgba(88, 28, 135, 0.2) 50%, rgba(17, 24, 39, 0.7) 100%)'
+                  : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.85) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
                 border: isDarkTheme
-                  ? '1px solid rgba(148, 163, 184, 0.2)'
-                  : '1px solid rgba(203, 213, 225, 0.3)',
+                  ? '1px solid rgba(147, 51, 234, 0.3)'
+                  : '1px solid rgba(71, 85, 105, 0.12)',
                 boxShadow: isDarkTheme
-                  ? '0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                  : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+                  ? '0 12px 20px -3px rgba(147, 51, 234, 0.2), 0 6px 12px -2px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                  : '0 8px 25px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(71, 85, 105, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1)'
               }}
             >
               <div className="mb-6">
