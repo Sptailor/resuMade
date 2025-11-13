@@ -2,6 +2,8 @@
 
 A modern resume builder application with a clean, professional interface and dark/light theme support.
 
+**[Live Demo](https://resu-made.vercel.app/)**
+
 ## Features
 
 - **Personal Information** - Add your name, email, and phone number
