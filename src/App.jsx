@@ -28,7 +28,7 @@ const [personData, setPersonData] = useState({
   });
   const [editingEducationIndex, setEditingEducationIndex] = useState(null);
   const [editingExperienceIndex, setEditingExperienceIndex] = useState(null);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   const addEducation = () => {
     if (currentEducation.degree && currentEducation.institution && currentEducation.month && currentEducation.year) {
